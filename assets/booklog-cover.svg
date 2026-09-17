@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="340" viewBox="0 0 1280 340" role="img" aria-labelledby="title desc">
+<title id="title">BookLog — Laboratório de Engenharia de Software</title>
+<desc id="desc">Organize sua biblioteca. Acompanhe sua leitura. Identidade visual em azul escuro e verde.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#102536"/><stop offset="1" stop-color="#173d4c"/></linearGradient></defs>
+<rect width="1280" height="340" rx="18" fill="url(#bg)"/>
+<circle cx="1150" cy="40" r="190" fill="#25535e" opacity=".5"/>
+<circle cx="1200" cy="310" r="180" fill="#286170" opacity=".25"/>
+<g fill="none" stroke="#7fe3c3" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+<path d="M1015 130 Q1067 112 1105 138 Q1143 112 1195 130 V230 Q1143 212 1105 238 Q1067 212 1015 230 Z"/>
+<path d="M1105 138 V238 M1037 153 Q1065 145 1083 156 M1127 156 Q1153 145 1173 153 M1037 177 Q1065 169 1083 180 M1127 180 Q1153 169 1173 177"/>
+</g>
+<g font-family="Segoe UI,Arial,sans-serif">
+<text x="64" y="74" fill="#7fe3c3" font-size="16" letter-spacing="3">LABORATÓRIO DE ENGENHARIA DE SOFTWARE</text>
+<text x="60" y="167" fill="#ffffff" font-size="80" font-weight="700" letter-spacing="-2">BookLog</text>
+<text x="64" y="220" fill="#d1e1e7" font-size="26">Organize sua biblioteca. Acompanhe sua leitura.</text>
+<rect x="64" y="259" width="210" height="36" rx="18" fill="#7fe3c3"/>
+<text x="169" y="283" text-anchor="middle" fill="#102536" font-size="14" font-weight="700">PRIMEIRA ENTREGA</text>
+</g></svg>

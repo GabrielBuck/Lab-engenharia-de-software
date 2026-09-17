@@ -1,4 +1,5 @@
 # Diagrama de implantação
+
 Topologia proposta para teste integrado. Não representa infraestrutura publicada.
 ```mermaid
 flowchart LR
@@ -13,3 +14,7 @@ flowchart LR
   App -->|HTTP em desenvolvimento controlado| API
 ```
 Para exposição remota, usar HTTPS e restringir o banco à rede interna. Configurar URL da API conforme simulador/dispositivo; localhost no dispositivo não aponta para a máquina do backend.
+
+---
+
+[Índice da documentação](../README.md) · [Página do projeto](../../README.md)

@@ -1,4 +1,5 @@
 # Sprint 02 — Planejamento do fluxo principal
+
 **Estado:** planejamento.
 **Objetivo:** demonstrar entrada → busca → biblioteca → progresso com evidências.
 
@@ -11,7 +12,13 @@
 | Design | Protótipo navegável e teste com leitores | Recrutamento e escopo validado | CT009, CT012 |
 
 ## Definição de pronto
+
 Critérios demonstrados, testes pertinentes executados, revisão por outro integrante e documentos atualizados. Registrar evidência e limitações; não marcar pronto apenas por haver um endpoint.
 
 ## Riscos
+
 Diferença entre proposta e contrato atual; dados de teste insuficientes; disponibilidade do ambiente iOS. Negociar escopo antes de iniciar, sem declarar entregas antecipadamente.
+
+---
+
+[Índice da documentação](../README.md) · [Página do projeto](../../README.md)

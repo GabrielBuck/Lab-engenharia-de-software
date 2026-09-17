@@ -1,4 +1,5 @@
 # Diagrama de pacotes
+
 Organização lógica inspirada no backend de referência.
 ```mermaid
 flowchart TD
@@ -11,3 +12,7 @@ flowchart TD
   API --> Common["common / auth guards / erros"]
 ```
 Dependências concretas são resolvidas pela composição dos módulos. Evitar regras de negócio no cliente e nos controllers.
+
+---
+
+[Índice da documentação](../README.md) · [Página do projeto](../../README.md)

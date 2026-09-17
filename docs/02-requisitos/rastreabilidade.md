@@ -1,4 +1,5 @@
 # Matriz de rastreabilidade
+
 Os vínculos abaixo mostram cobertura planejada. Nenhum teste de produto foi executado neste repositório.
 
 | Requisito | Caso de uso | Regra | Componente | Teste |
@@ -22,3 +23,7 @@ Os vínculos abaixo mostram cobertura planejada. Nenhum teste de produto foi exe
 | RNF007 | CT004, CT006, CT008 automatizados na integração futura |
 
 Consulte [casos de uso](../03-casos-de-uso/README.md) e [plano de testes](../../tests/plano-testes.md). Em cada mudança, verificar também impactos na jornada, modelo e arquitetura.
+
+---
+
+[Índice da documentação](../README.md) · [Página do projeto](../../README.md)

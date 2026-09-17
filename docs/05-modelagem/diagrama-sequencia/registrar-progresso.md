@@ -1,4 +1,5 @@
 # Sequência — registrar progresso
+
 Cenário UC004; arquitetura proposta. A chamada é conceitual e não substitui o contrato HTTP.
 
 ```mermaid
@@ -43,3 +44,7 @@ sequenceDiagram
     end
   end
 ```
+
+---
+
+[Índice da documentação](../../README.md) · [Página do projeto](../../../README.md)

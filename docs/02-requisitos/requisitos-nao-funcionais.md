@@ -1,4 +1,5 @@
 # Requisitos não funcionais
+
 Metas propostas, ainda não medidas. FURPS organiza funcionalidade/segurança (F), usabilidade (U), confiabilidade (R), desempenho (P) e suporte/manutenção (S).
 
 | ID | Categoria | Meta verificável | Verificação e condição |
@@ -12,3 +13,7 @@ Metas propostas, ainda não medidas. FURPS organiza funcionalidade/segurança (F
 | RNF007 | S / testabilidade | Regras de propriedade, duplicidade e limite de progresso têm testes automatizados de sucesso e falha | Revisão dos testes da aplicação e relatório de execução na futura integração |
 
 O pipeline atual valida documentos, não certifica segurança, desempenho ou acessibilidade do produto. O adapter em memória não atende à meta de durabilidade de RNF003.
+
+---
+
+[Índice da documentação](../README.md) · [Página do projeto](../../README.md)

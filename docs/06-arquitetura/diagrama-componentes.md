@@ -1,4 +1,5 @@
 # Diagrama de componentes
+
 Visão lógica proposta do recorte; integração externa de catálogo é opcional.
 ```mermaid
 flowchart LR
@@ -14,3 +15,7 @@ flowchart LR
   BooksRepo --> DB
   LibraryRepo --> DB
 ```
+
+---
+
+[Índice da documentação](../README.md) · [Página do projeto](../../README.md)

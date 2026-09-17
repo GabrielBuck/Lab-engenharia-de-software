@@ -1,4 +1,5 @@
 # Regras de negócio
+
 Regras propostas para o recorte acadêmico; validar contra o backend antes da integração.
 
 | ID | Regra | Impacto |
@@ -12,3 +13,7 @@ Regras propostas para o recorte acadêmico; validar contra o backend antes da in
 | RN007 | Senha tem de 8 a 128 caracteres e inclui maiúscula, minúscula, número e símbolo | Derivada do DTO de cadastro consultado |
 
 O backend de referência também cita status borrowed; ele não integra o recorte inicial. RN003, RN005 e RN006 exigem confirmação de comportamento na implementação. Não alterar os contratos existentes silenciosamente.
+
+---
+
+[Índice da documentação](../README.md) · [Página do projeto](../../README.md)

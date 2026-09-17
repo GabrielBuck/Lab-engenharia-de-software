@@ -1,4 +1,5 @@
 # Jornada do usuário
+
 Jornada conceitual baseada na persona Marina.
 
 | Etapa | Objetivo | Ação | Pensamento presumido | Emoção presumida | Resposta do produto |
@@ -10,7 +11,13 @@ Jornada conceitual baseada na persona Marina.
 | Concluir | Registrar conquista | Marca Concluído | Quero consultar isso depois | Satisfação | Histórico filtrável |
 
 ## Pontos de falha
+
 Rede indisponível deve ser diferenciada de lista vazia; gravação falha não pode parecer sucesso; item duplicado deve preservar o existente. Não prometer sincronização offline nesta etapa.
 
 ## Validação
+
 Solicitar o ciclo completo, observar sem instruir, medir duração e registrar dificuldade por etapa conforme RNF002. Ainda não há dados de pesquisa.
+
+---
+
+[Índice da documentação](../README.md) · [Página do projeto](../../README.md)

@@ -14,6 +14,7 @@ function walk(dir) {
 const required = [
   'README.md', 'CONTRIBUTING.md', '.gitignore',
   '.github/workflows/ci.yml', 'docs/fontes-e-premissas.md',
+  'docs/README.md', 'docs/entregas/primeira-entrega.md', 'assets/booklog-cover.svg',
   'docs/01-visao-produto/visao-produto.md',
   'docs/02-requisitos/requisitos-funcionais.md',
   'docs/02-requisitos/requisitos-nao-funcionais.md',

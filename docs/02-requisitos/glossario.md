@@ -1,4 +1,5 @@
 # Glossário
+
 | Termo | Significado |
 | --- | --- |
 | Catálogo | Conjunto de livros disponíveis para busca |
@@ -13,3 +14,7 @@
 | RF / RNF / RN | Requisito funcional / não funcional / regra de negócio |
 | UC / CT / ADR | Caso de uso / caso de teste / registro de decisão arquitetural |
 | Baseline | Versão de referência dos artefatos, sujeita a controle de mudanças |
+
+---
+
+[Índice da documentação](../README.md) · [Página do projeto](../../README.md)

@@ -1,66 +1,95 @@
-# BookLog — Laboratório de Engenharia de Software
+# BookLog
 
-Portfólio acadêmico do BookLog, um aplicativo para organizar a biblioteca pessoal e acompanhar leituras. Reúne visão de produto, requisitos, casos de uso, design, modelagem, arquitetura e acompanhamento do trabalho.
+![BookLog — Organize sua biblioteca. Acompanhe sua leitura.](assets/booklog-cover.svg)
 
-**Estado:** documentação inicial para revisão da equipe. Os requisitos são uma proposta de recorte acadêmico; não representam aceite do professor nem funcionalidades verificadas neste repositório. Não há aplicação executável aqui nesta etapa.
+[![Documentação](https://github.com/GabrielBuck/Lab-engenharia-de-software/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/GabrielBuck/Lab-engenharia-de-software/actions/workflows/ci.yml)
 
-## Objetivo
-Centralizar livros desejados, em leitura e concluídos, permitindo registrar progresso e consultar o histórico pessoal.
+**Laboratório de Engenharia de Software · Primeira entrega**
 
-## Integrantes
-| Nome | RA |
+BookLog é um aplicativo para organizar livros desejados, em leitura e concluídos. Este repositório reúne a especificação do produto e os artefatos de engenharia que orientam seu desenvolvimento.
+
+**[Conheça a primeira entrega](docs/entregas/primeira-entrega.md)** · **[Explore a documentação](docs/README.md)** · **[Consulte a rastreabilidade](docs/02-requisitos/rastreabilidade.md)**
+
+## O projeto
+
+Listas dispersas e registros de progresso desconectados dificultam escolher e retomar uma leitura. O BookLog conecta descoberta, organização e acompanhamento em uma biblioteca pessoal.
+
+O recorte inicial contempla sete funcionalidades: cadastro, autenticação, busca de livros, adição à biblioteca, alteração de status, registro de progresso e consulta da biblioteca.
+
+```mermaid
+flowchart LR
+    A["Entrar"] --> B["Buscar livro"]
+    B --> C["Adicionar à biblioteca"]
+    C --> D["Registrar progresso"]
+    D --> E["Consultar leituras"]
+```
+
+## Primeira entrega
+
+A entrega apresenta a concepção e a especificação do BookLog, com critérios de aceite e vínculos entre requisitos, modelos e testes.
+
+| Frente | Conteúdo | Acesso |
+| --- | --- | --- |
+| Produto | Problema, escopo, proposta de valor e duas personas | [Visão do produto](docs/01-visao-produto/visao-produto.md) |
+| Requisitos | 7 RF, 7 RNF, 7 regras de negócio e rastreabilidade | [Requisitos](docs/02-requisitos/requisitos-funcionais.md) |
+| Casos de uso | 5 narrativas com fluxos principais, alternativas e diagrama UML | [Casos de uso](docs/03-casos-de-uso/README.md) |
+| Design | Jornada e 4 wireframes de baixa fidelidade | [Wireframes](docs/04-design/wireframes/README.md) |
+| Modelagem | Classes de domínio e sequência de atualização de progresso | [Modelo de domínio](docs/05-modelagem/modelo-dominio.md) |
+| Arquitetura | Componentes, pacotes, implantação e 4 decisões arquiteturais | [Arquitetura](docs/06-arquitetura/visao-arquitetural.md) |
+| Processo e qualidade | Registro documental, planejamento e 12 cenários de teste | [Primeira entrega](docs/entregas/primeira-entrega.md) |
+
+Os artefatos especificam o comportamento esperado. Os wireframes são conceituais e o plano de testes descreve cenários de verificação; a CI valida a documentação. A implementação de referência é mantida no [backend do BookLog](https://github.com/Bin4ryLibr4ry/booklog-backend).
+
+## Equipe
+
+| Integrante | RA |
 | --- | --- |
 | Gabriel Nottoli Buck | 10425384 |
 | Julia Andrade | 10427828 |
 
 ## Tecnologias
-| Parte | Referência / proposta |
+
+| Camada | Tecnologia |
 | --- | --- |
-| Frontend | Aplicativo iOS |
-| Backend de referência | NestJS + TypeScript, API REST, JWT e bcrypt |
-| Persistência de referência | PostgreSQL; adapter em memória para desenvolvimento |
-| Documentação | Markdown, Mermaid e SVG |
-| Qualidade deste portfólio | Node.js 22+ e GitHub Actions |
+| Cliente de referência | Aplicativo iOS |
+| Backend de referência | NestJS, TypeScript, REST, JWT e bcrypt |
+| Persistência de referência | PostgreSQL e adapter em memória |
+| Artefatos | Markdown, Mermaid e SVG |
+| Validação documental | Node.js 22 e GitHub Actions |
 
-O backend existente está em [Bin4ryLibr4ry/booklog-backend](https://github.com/Bin4ryLibr4ry/booklog-backend). Consulte [fontes e limites](docs/fontes-e-premissas.md) antes de comparar proposta e implementação.
+## Navegação e execução
 
-## Documentação
-1. [Visão do produto](docs/01-visao-produto/visao-produto.md), [proposta de valor](docs/01-visao-produto/proposta-valor.md) e [personas](docs/01-visao-produto/personas.md).
-2. [Requisitos funcionais](docs/02-requisitos/requisitos-funcionais.md), [não funcionais](docs/02-requisitos/requisitos-nao-funcionais.md), [regras de negócio](docs/02-requisitos/regras-negocio.md), [stakeholders](docs/02-requisitos/stakeholders.md) e [glossário](docs/02-requisitos/glossario.md).
-3. [Casos de uso e diagrama](docs/03-casos-de-uso/README.md).
-4. [Wireframes](docs/04-design/wireframes/README.md) e [jornada](docs/04-design/jornada-usuario.md).
-5. [Modelo de domínio e classes](docs/05-modelagem/modelo-dominio.md) e [sequência](docs/05-modelagem/diagrama-sequencia/registrar-progresso.md).
-6. [Visão arquitetural](docs/06-arquitetura/visao-arquitetural.md) e [decisões](docs/06-arquitetura/decisoes-arquiteturais.md).
-7. [Sprint 01](docs/07-sprints/sprint-01.md), [Sprint 02](docs/07-sprints/sprint-02.md).
-8. [Rastreabilidade](docs/02-requisitos/rastreabilidade.md) e [plano de testes](tests/plano-testes.md).
+A documentação pode ser consultada diretamente no GitHub, incluindo os diagramas Mermaid e wireframes SVG. O [índice](docs/README.md) oferece acesso a todos os artefatos; o [roteiro da primeira entrega](docs/entregas/primeira-entrega.md) organiza a apresentação.
 
-## Metodologia
-Ciclos curtos com backlog, critérios de aceite, revisão por pares e registro de evidências. Veja o [guia de contribuição e Git Flow](CONTRIBUTING.md).
-
-## Como utilizar
-Clone este repositório e abra o README no GitHub ou em um editor com suporte a Mermaid. Para validar a documentação, instale Node.js 22 ou superior e execute:
+Para validar localmente:
 
 ```bash
+git clone https://github.com/GabrielBuck/Lab-engenharia-de-software.git
+cd Lab-engenharia-de-software
 node scripts/validate-docs.mjs
 ```
 
-Não há dependências npm para essa verificação. A CI executa o mesmo comando em pushes e pull requests. Os wireframes SVG podem ser abertos no navegador.
+Requer Node.js 22 ou superior, sem instalação de dependências npm. A mesma verificação é executada em pushes e pull requests.
 
-Para executar o sistema de referência, use as instruções do [backend](https://github.com/Bin4ryLibr4ry/booklog-backend#como-rodar-localmente).
+Para executar a API, consulte as [instruções do backend](https://github.com/Bin4ryLibr4ry/booklog-backend#como-rodar-localmente).
 
-## Estrutura
+## Organização
+
 ```text
 docs/
-  01-visao-produto/
-  02-requisitos/
-  03-casos-de-uso/casos-uso/
-  04-design/wireframes/
-  05-modelagem/diagrama-sequencia/
-  06-arquitetura/
-  07-sprints/
-tests/
-assets/
-  diagramas/
-scripts/
-.github/workflows/
+├── README.md                  Índice dos artefatos
+├── entregas/                  Guia da primeira entrega
+├── 01-visao-produto/           Problema, valor e personas
+├── 02-requisitos/              Especificação e rastreabilidade
+├── 03-casos-de-uso/            UML e narrativas
+├── 04-design/                 Jornada e wireframes
+├── 05-modelagem/              Domínio e sequência
+├── 06-arquitetura/             Visões e decisões
+└── 07-sprints/                 Registro e planejamento
+tests/                         Plano de testes
+assets/                        Identidade visual e índice de diagramas
+scripts/                       Validação documental
+.github/workflows/             Integração contínua
 ```
+
+O [guia de contribuição](CONTRIBUTING.md) descreve o fluxo de trabalho. As [fontes](docs/fontes-e-premissas.md) registram a origem das referências técnicas.

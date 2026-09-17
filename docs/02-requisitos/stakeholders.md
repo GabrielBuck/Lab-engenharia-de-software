@@ -1,4 +1,5 @@
 # Stakeholders
+
 | Parte interessada | Interesse | Participação |
 | --- | --- | --- |
 | Leitores | Organizar acervo e retomar leitura | Entrevistas e teste do fluxo |
@@ -7,6 +8,7 @@
 | Mantenedores do BookLog | Compatibilidade com o sistema existente | Revisão de contratos e integração |
 
 ## Levantamento e negociação
+
 1. Concepção: confirmar problema, recorte e restrições.
 2. Levantamento: entrevistar leitores e observar o fluxo atual.
 3. Elaboração: revisar RF, RNF, regras, personas e casos.
@@ -16,3 +18,7 @@
 7. Gestão: registrar mudanças, responsáveis e evidências em PR.
 
 Nenhuma entrevista ou aprovação foi registrada ainda.
+
+---
+
+[Índice da documentação](../README.md) · [Página do projeto](../../README.md)

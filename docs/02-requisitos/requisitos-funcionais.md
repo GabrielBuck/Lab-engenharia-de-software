@@ -1,7 +1,9 @@
 # Requisitos funcionais
+
 Especificação de requisitos v0.1. Origem: visão do produto e contratos do backend de referência. Os critérios abaixo descrevem o comportamento exigido, não resultados de testes da implementação.
 
 ## RF001 — Cadastrar usuário
+
 - **Descrição:** Informar nome, username, email e senha para criar uma conta.
 - **Ator:** Visitante.
 - **Prioridade:** Alta.
@@ -9,6 +11,7 @@ Especificação de requisitos v0.1. Origem: visão do produto e contratos do bac
 - **Rastreio:** UC001 / CT001.
 
 ## RF002 — Autenticar usuário
+
 - **Descrição:** Entrar com credenciais e obter sessão para acessar recursos pessoais.
 - **Ator:** Leitor cadastrado.
 - **Prioridade:** Alta.
@@ -16,6 +19,7 @@ Especificação de requisitos v0.1. Origem: visão do produto e contratos do bac
 - **Rastreio:** UC002 / CT002.
 
 ## RF003 — Buscar livros
+
 - **Descrição:** Pesquisar o catálogo por título ou autor e abrir detalhes.
 - **Ator:** Leitor.
 - **Prioridade:** Alta.
@@ -23,6 +27,7 @@ Especificação de requisitos v0.1. Origem: visão do produto e contratos do bac
 - **Rastreio:** UC003 / CT003.
 
 ## RF004 — Adicionar livro à biblioteca
+
 - **Descrição:** Salvar um livro existente com status inicial Quero ler.
 - **Ator:** Leitor autenticado.
 - **Prioridade:** Alta.
@@ -30,6 +35,7 @@ Especificação de requisitos v0.1. Origem: visão do produto e contratos do bac
 - **Rastreio:** UC003 / CT004.
 
 ## RF005 — Alterar status de leitura
+
 - **Descrição:** Marcar um item como Quero ler, Lendo ou Concluído.
 - **Ator:** Leitor autenticado.
 - **Prioridade:** Alta.
@@ -37,6 +43,7 @@ Especificação de requisitos v0.1. Origem: visão do produto e contratos do bac
 - **Rastreio:** UC004 / CT005.
 
 ## RF006 — Registrar progresso
+
 - **Descrição:** Informar a página atual de um livro da própria biblioteca.
 - **Ator:** Leitor autenticado.
 - **Prioridade:** Alta.
@@ -44,6 +51,7 @@ Especificação de requisitos v0.1. Origem: visão do produto e contratos do bac
 - **Rastreio:** UC004 / CT006.
 
 ## RF007 — Consultar biblioteca pessoal
+
 - **Descrição:** Listar os próprios livros e filtrar por status.
 - **Ator:** Leitor autenticado.
 - **Prioridade:** Alta.
@@ -51,4 +59,9 @@ Especificação de requisitos v0.1. Origem: visão do produto e contratos do bac
 - **Rastreio:** UC005 / CT007.
 
 ## Gestão
+
 Usar IDs estáveis. Alterações devem explicar motivo, impacto e decisão em pull request e atualizar a rastreabilidade. Estados: proposto → validado → implementado → verificado. Não avançar sem evidência.
+
+---
+
+[Índice da documentação](../README.md) · [Página do projeto](../../README.md)

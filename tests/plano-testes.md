@@ -1,4 +1,5 @@
 # Plano de testes do produto
+
 **Estado de todos os CTs:** planejado / não executado. A CI atual verifica somente documentação.
 
 Pré-condições gerais: ambiente isolado, catálogo conhecido, duas contas de teste A/B, registro da versão, configuração e evidências. Não usar dados reais. Limpar dados de teste de modo controlado.
@@ -19,7 +20,9 @@ Pré-condições gerais: ambiente isolado, catálogo conhecido, duas contas de t
 | CT012 | Navegar telas principais com VoiceOver e revisar estados | Controles nomeados, ordem compreensível e informação independente de cor |
 
 ## Evidências
+
 Para cada execução, registrar CT, data, responsável, commit da aplicação, dados/ambiente, resultado esperado/obtido e anexo ou issue. Automatizar regras e autorização na implementação; usabilidade exige observação humana.
 
 ## Validação já disponível
+
 `node scripts/validate-docs.mjs` verifica arquivos essenciais, links locais e presença dos IDs rastreados. Não verifica links externos, semântica de UML, conformidade acadêmica ou comportamento da aplicação.
