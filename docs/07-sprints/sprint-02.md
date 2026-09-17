@@ -1,5 +1,5 @@
 # Sprint 02 — Planejamento do fluxo principal
-**Estado:** planejada, não iniciada. **Datas e responsáveis:** a definir.
+**Estado:** planejamento.
 **Objetivo:** demonstrar entrada → busca → biblioteca → progresso com evidências.
 
 | Item | Entrega esperada | Dependência | Aceite |

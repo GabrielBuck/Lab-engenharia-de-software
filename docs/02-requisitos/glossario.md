@@ -2,7 +2,7 @@
 | Termo | Significado |
 | --- | --- |
 | Catálogo | Conjunto de livros disponíveis para busca |
-| Livro | Obra/edição identificada no catálogo; critérios de edição a confirmar |
+| Livro | Obra/edição identificada no catálogo |
 | Biblioteca pessoal | Associação entre leitor e livros selecionados |
 | Item de biblioteca | Livro vinculado a um usuário, com status e progresso próprios |
 | Progresso | Página atual registrada; percentual só quando total é conhecido |

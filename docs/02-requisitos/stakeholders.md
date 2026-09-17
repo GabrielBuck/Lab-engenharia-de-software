@@ -1,10 +1,10 @@
 # Stakeholders
-| Parte interessada | Interesse | Participação planejada | Identificação |
-| --- | --- | --- | --- |
-| Leitores | Organizar acervo e retomar leitura | Entrevistas e teste do fluxo | Participantes a recrutar |
-| Equipe acadêmica | Construir e justificar a solução | Refinamento, implementação, revisão | Gabriel Nottoli Buck (RA 10425384) e Julia Andrade (RA 10427828) |
-| Professor da disciplina | Avaliar processo e artefatos | Revisão dos marcos e critérios | A preencher |
-| Mantenedores do BookLog | Compatibilidade com o sistema existente | Revisão de contratos e integração | A confirmar |
+| Parte interessada | Interesse | Participação |
+| --- | --- | --- |
+| Leitores | Organizar acervo e retomar leitura | Entrevistas e teste do fluxo |
+| Gabriel Nottoli Buck (RA 10425384) e Julia Andrade (RA 10427828) | Construir e justificar a solução | Refinamento, implementação, revisão |
+| Professor da disciplina | Avaliar processo e artefatos | Revisão dos marcos e critérios |
+| Mantenedores do BookLog | Compatibilidade com o sistema existente | Revisão de contratos e integração |
 
 ## Levantamento e negociação
 1. Concepção: confirmar problema, recorte e restrições.

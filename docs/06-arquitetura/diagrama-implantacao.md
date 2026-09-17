@@ -12,4 +12,4 @@ flowchart LR
   end
   App -->|HTTP em desenvolvimento controlado| API
 ```
-Para exposição remota, usar HTTPS e restringir o banco à rede interna. Configurar URL da API conforme simulador/dispositivo; localhost no dispositivo não aponta para a máquina do backend. Versão do ambiente, hostname e procedimentos de deploy serão registrados quando definidos.
+Para exposição remota, usar HTTPS e restringir o banco à rede interna. Configurar URL da API conforme simulador/dispositivo; localhost no dispositivo não aponta para a máquina do backend.

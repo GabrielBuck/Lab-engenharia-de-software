@@ -1,5 +1,5 @@
 # Decisões arquiteturais
-Registros propostos em 17/09/2026, aguardando revisão da equipe. Nenhuma aprovação foi presumida.
+Registros de propostas arquiteturais de 17/09/2026.
 
 ## ADR001 — Monólito modular em camadas
 **Contexto:** escopo acadêmico pequeno e backend NestJS já existente.
@@ -17,10 +17,9 @@ Registros propostos em 17/09/2026, aguardando revisão da equipe. Nenhuma aprova
 
 ## ADR003 — Portfólio separado da implementação existente
 **Contexto:** este repositório estava vazio; o BookLog possui backend separado.
-**Decisão inicial:** documentar fontes e manter diretórios de integração sem duplicar código.
+**Decisão:** documentar as fontes e referenciar a implementação em seu repositório, sem duplicar código.
 **Alternativas:** monorepo; submodules.
 **Consequências:** reduz cópias divergentes; execução depende de outro repositório.
-**Revisão necessária:** confirmar com professor se a entrega exige código consolidado; se exigir, planejar importação preservando histórico/licença.
 
 ## ADR004 — Diagramas editáveis
 **Contexto:** modelos evoluem durante o semestre.

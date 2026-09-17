@@ -1,5 +1,5 @@
 # Jornada do usuário
-Hipótese baseada na persona Marina, a validar em teste de protótipo.
+Jornada conceitual baseada na persona Marina.
 
 | Etapa | Objetivo | Ação | Pensamento presumido | Emoção presumida | Resposta do produto |
 | --- | --- | --- | --- | --- | --- |

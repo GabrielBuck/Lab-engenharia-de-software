@@ -1,5 +1,5 @@
 # Diagrama de pacotes
-Organização lógica inspirada no backend de referência; as pastas acadêmicas ainda contêm apenas documentação.
+Organização lógica inspirada no backend de referência.
 ```mermaid
 flowchart TD
   API["controllers / DTOs"] --> Services["services / regras"]

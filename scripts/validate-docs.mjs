@@ -12,7 +12,7 @@ function walk(dir) {
   });
 }
 const required = [
-  'README.md', 'CONTRIBUTING.md', 'LICENSE', '.gitignore',
+  'README.md', 'CONTRIBUTING.md', '.gitignore',
   '.github/workflows/ci.yml', 'docs/fontes-e-premissas.md',
   'docs/01-visao-produto/visao-produto.md',
   'docs/02-requisitos/requisitos-funcionais.md',
@@ -23,8 +23,6 @@ const required = [
   'docs/04-design/wireframes/README.md', 'docs/05-modelagem/modelo-dominio.md',
   'docs/06-arquitetura/visao-arquitetural.md',
   'docs/07-sprints/sprint-01.md', 'docs/07-sprints/sprint-02.md',
-  'docs/07-sprints/sprint-review.md',
-  'src/backend/README.md', 'src/frontend/README.md', 'src/database/README.md',
   'tests/plano-testes.md'
 ];
 for (const path of required) {

@@ -16,4 +16,4 @@ Personas fictícias, criadas como hipóteses de design. Não representam pessoas
 - Cenário: encontra um livro no catálogo e o salva em Quero ler.
 
 ## Validação
-Entrevistar leitores voluntários sobre hábitos e dificuldades, sem induzir as respostas. Registrar divergências e revisar as personas. Quantidade de participantes e responsáveis: a definir.
+Entrevistar leitores voluntários sobre hábitos e dificuldades, sem induzir as respostas. Registrar divergências e revisar as personas.

@@ -1,5 +1,5 @@
 # Visão do produto
-**Produto:** BookLog. **Estado:** proposta acadêmica v0.1, a validar.
+**Produto:** BookLog. **Versão:** proposta acadêmica v0.1.
 
 ## Problema
 Leitores distribuem listas de livros e anotações de progresso entre memória, notas e planilhas, dificultando retomar uma leitura e visualizar o próprio acervo.
@@ -17,4 +17,4 @@ Resenhas, anotações, recomendações, clubes e empréstimos são possibilidade
 Concluir o ciclo principal em teste moderado; preservar o progresso após nova sessão; manter isolamento entre bibliotecas de usuários distintos. Metas e métodos estão nos requisitos não funcionais.
 
 ## Restrições e riscos
-Tempo da disciplina a confirmar; integração iOS/API ainda precisa de evidência; catálogo externo pode falhar. A primeira demonstração deve usar catálogo controlado e contas de teste, sem dados pessoais reais.
+O catálogo externo pode falhar. A primeira demonstração deve usar catálogo controlado e contas de teste, sem dados pessoais reais.
