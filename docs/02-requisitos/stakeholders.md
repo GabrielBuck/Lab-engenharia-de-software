@@ -2,7 +2,7 @@
 | Parte interessada | Interesse | Participação planejada | Identificação |
 | --- | --- | --- | --- |
 | Leitores | Organizar acervo e retomar leitura | Entrevistas e teste do fluxo | Participantes a recrutar |
-| Equipe acadêmica | Construir e justificar a solução | Refinamento, implementação, revisão | Nomes e RAs a preencher |
+| Equipe acadêmica | Construir e justificar a solução | Refinamento, implementação, revisão | Gabriel Nottoli Buck (RA 10425384) e Julia Andrade (RA 10427828) |
 | Professor da disciplina | Avaliar processo e artefatos | Revisão dos marcos e critérios | A preencher |
 | Mantenedores do BookLog | Compatibilidade com o sistema existente | Revisão de contratos e integração | A confirmar |
 

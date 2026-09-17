@@ -1,6 +1,7 @@
 # Sprint 01 — Base do portfólio
 **Estado:** artefatos iniciais preparados; validação acadêmica pendente.
-**Período, integrantes e responsáveis:** a definir.
+**Integrantes:** Gabriel Nottoli Buck (RA 10425384) e Julia Andrade (RA 10427828).
+**Período e responsáveis por entrega:** a definir.
 
 ## Objetivo
 Estabelecer problema, recorte e documentação rastreável do BookLog.
@@ -17,7 +18,7 @@ Estabelecer problema, recorte e documentação rastreável do BookLog.
 As marcações concluídas indicam arquivos criados, não aprovação nem software implementado.
 
 ## Problemas identificados
-Integrantes/RAs e cronograma não fornecidos; plano integral da disciplina indisponível; integração com repositórios de implementação ainda não decidida.
+Cronograma não fornecido; plano integral da disciplina indisponível; integração com repositórios de implementação ainda não decidida.
 
 ## Próximos passos
 Validar prioridades e critérios, preencher responsáveis e selecionar histórias da Sprint 02.

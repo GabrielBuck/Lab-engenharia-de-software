@@ -10,7 +10,8 @@ Centralizar livros desejados, em leitura e concluídos, permitindo registrar pro
 ## Integrantes
 | Nome | RA | Responsabilidade |
 | --- | --- | --- |
-| A preencher pela equipe | A preencher | A distribuir |
+| Gabriel Nottoli Buck | 10425384 | A distribuir |
+| Julia Andrade | 10427828 | A distribuir |
 
 ## Tecnologias
 | Parte | Referência / proposta |
@@ -70,7 +71,7 @@ scripts/
 ```
 
 ## Próximas decisões
-- Preencher integrantes e RAs.
+- Distribuir responsabilidades entre os integrantes.
 - Validar escopo, personas, regras e metas de qualidade.
 - Definir datas das sprints e responsáveis.
 - Confirmar estratégia de integração dos repositórios e publicar protótipo navegável.
