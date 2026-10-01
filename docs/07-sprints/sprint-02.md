@@ -8,7 +8,7 @@
 | Auditoria | Comparação do portfólio com backend, Android e iOS | [Estado atual](../estado-atual.md) | Referências e delta registrados |
 | Produto | Escopo funcional ampliado para as capacidades implementadas | [Requisitos](../02-requisitos/requisitos-funcionais.md) | Sem funcionalidades inventadas |
 | Domínio e dados | Entidades, relações, migrations e constraints atuais | [Modelagem](../05-modelagem/modelo-dominio.md) | Coerente com PostgreSQL oficial |
-| Arquitetura | Dois clientes, API modular, banco, integrações e AWS | [Visão arquitetural](../06-arquitetura/visao-arquitetural.md) | Fluxo end-to-end representado |
+| Arquitetura | Dois clientes, API modular, Railway, PostgreSQL, integrações e analytics | [Visão arquitetural](../06-arquitetura/visao-arquitetural.md) | Fluxo end-to-end representado |
 | Contratos | Famílias de endpoints e regras transversais | [Contrato da API](../06-arquitetura/contratos-api.md) | Sem URLs ou credenciais privadas |
 | Qualidade | CI documental e referência às validações oficiais | [Plano de testes](../../tests/plano-testes.md) | Links e rastreabilidade válidos |
 

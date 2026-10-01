@@ -30,21 +30,20 @@ O [mapa de requisitos](docs/02-requisitos/requisitos-funcionais.md) distingue a 
 
 ```mermaid
 flowchart LR
-  iOS["iOS\nSwift / SwiftUI"] -->|HTTPS / REST| ALB["AWS ALB"]
-  Android["Android\nKotlin / Compose"] -->|HTTPS / REST| ALB
-  ALB --> API["API NestJS\nECS Fargate"]
-  API --> DB[("PostgreSQL\nRDS")]
-  API <--> External["Catálogo · OAuth\nEmail · IA"]
-  CI["GitHub Actions"] -->|CI/CD + OIDC| API
+  iOS["iOS\nSwift / SwiftUI"] -->|HTTPS / REST| API["Railway\nbackend-prod · API NestJS"]
+  Android["Android\nKotlin / Compose"] -->|HTTPS / REST| API
+  API --> DB[("Railway\nPostgres-Production")]
+  API <--> External["Google Books · Open Library\nAmazon Creators · OAuth · IA"]
+  DB -.-> Analytics["Metabase · Databricks\nanálise fora do fluxo transacional"]
 ```
 
-O backend é um monólito modular em camadas: controllers e DTOs formam a fronteira HTTP, services concentram regras de negócio e repositories abstraem PostgreSQL/adapters de teste. A infraestrutura usa imagem Docker imutável, ECR, ECS Fargate, ALB, RDS, Secrets Manager e recursos definidos com AWS CDK.
+O backend é um monólito modular em camadas: controllers e DTOs formam a fronteira HTTP, services concentram regras de negócio e repositories abstraem PostgreSQL/adapters de teste. A implantação atual usa Railway, com serviços e bancos PostgreSQL separados para staging e produção. Metabase e Databricks consultam os dados para análise e não participam das requisições normais do aplicativo.
 
 ## Componentes oficiais auditados
 
 | Componente | Stack | Referência deste snapshot |
 | --- | --- | --- |
-| Backend | NestJS, TypeScript, PostgreSQL, Docker, AWS CDK | `a2852bc` |
+| Backend | NestJS, TypeScript, PostgreSQL, Docker, Railway | `a2852bc` |
 | Android | Kotlin, Jetpack Compose, MVVM/Clean Architecture, Hilt, Retrofit | `b4ed80f` |
 | iOS | Swift, SwiftUI, repositórios e serviços tipados | `cafaf44` |
 

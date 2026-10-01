@@ -9,7 +9,7 @@ Este repositório continua sendo o portfólio público de Engenharia de Software
 
 | Componente oficial | Referência auditada | Papel |
 | --- | --- | --- |
-| Backend | `a2852bc` (`backend/moderation-compatible`) | API NestJS, regras de negócio, persistência, integrações e infraestrutura |
+| Backend | `a2852bc` (`backend/moderation-compatible`) | API NestJS, regras de negócio, persistência, integrações e implantação Railway |
 | Android | `b4ed80f` (`origin/dev`) | Cliente Kotlin/Jetpack Compose |
 | iOS | `cafaf44` (`origin/dev`) | Cliente Swift/SwiftUI |
 
@@ -32,12 +32,13 @@ O ponto usado na primeira entrega foi o backend `5d3dc4a`, observado em 17/09/20
 | Segurança e confiança | Perfil privado, bloqueio, denúncia, moderação de conteúdo e retenção/exclusão de conta | Ausente | Incorporar requisitos de privacidade e moderação |
 | Clientes | iOS e Android nativos consumindo o mesmo contrato REST | Apenas iOS conceitual | Representar os dois clientes e suas camadas |
 | Persistência | PostgreSQL com migrations incrementais, constraints e índices | Três entidades conceituais | Publicar modelo lógico resumido e histórico de migrations |
-| Entrega | CI de qualidade, integração PostgreSQL, imagem Docker, CDK e deploy controlado | CI documental e topologia local proposta | Representar a arquitetura real sem dados da conta cloud |
+| Implantação | Railway com `backend-staging`/`Postgres-Staging` e `backend-prod`/`Postgres-Production` | CI documental e topologia local proposta | Representar os ambientes atuais sem publicar configuração privada |
+| Dados e analytics | Metabase para dashboards; Databricks para exploração e análise fora do fluxo transacional | Ausente | Explicitar que analytics não é dependência de execução do aplicativo |
 
 ## O que permanece fora do repositório público
 
 - valores de variáveis de ambiente, tokens, chaves, certificados e credenciais OAuth;
-- IDs de conta, ARNs, nomes internos de recursos, URLs privadas e dados operacionais;
+- identificadores de conta, nomes internos adicionais de recursos, URLs privadas e dados operacionais;
 - dados de usuários, bancos, logs e evidências que possam conter informação pessoal;
 - dumps e inventários internos usados nas validações dos repositórios oficiais;
 - código duplicado dos clientes e do backend, evitando uma cópia divergente da fonte da verdade.

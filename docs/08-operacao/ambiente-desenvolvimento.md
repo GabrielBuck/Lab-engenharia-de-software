@@ -61,7 +61,16 @@ O arquivo [`.env.example`](../../.env.example) deste portfólio contém apenas p
 
 ## Fluxo de entrega
 
-O CI oficial executa lint, testes, cobertura, build, auditoria de dependências, integração PostgreSQL, migrations idempotentes, runtime Docker e síntese/testes da infraestrutura. O deploy usa OIDC, publica imagem imutável, executa a migration uma vez, atualiza o serviço e verifica readiness.
+O CI oficial executa lint, testes, cobertura, build, auditoria de dependências, integração PostgreSQL, migrations idempotentes e validação do runtime Docker. A aplicação pode ser implantada no Railway pelo Dockerfile ou pelo build Node (`npm ci`, `npm run build` e `npm run start:prod`).
+
+O fluxo operacional promove alterações nesta ordem:
+
+```text
+desenvolvimento → backend-staging → Postgres-Staging → validação
+              → backend-prod    → Postgres-Production
+```
+
+As migrations são aplicadas de forma controlada com `npm run db:migrate`, antes de apontar clientes para a nova versão. O Railway injeta `PORT`, e `/v1/health/ready` verifica a conectividade PostgreSQL. Metabase e Databricks podem consultar dados para análise, mas não fazem parte do atendimento das requisições do aplicativo.
 
 ---
 

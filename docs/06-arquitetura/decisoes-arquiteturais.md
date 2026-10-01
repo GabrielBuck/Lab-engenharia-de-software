@@ -38,11 +38,11 @@ Registros públicos das decisões observadas até 01/10/2026. ADR001 a ADR004 pr
 **Decisão:** manter repositórios e arquiteturas nativas, compartilhando contratos e regras críticas no backend.
 **Consequências:** preserva experiência de plataforma; exige auditoria de compatibilidade em mudanças de DTO/endpoint.
 
-## ADR006 — Deploy containerizado e infraestrutura como código
+## ADR006 — Railway com staging e produção separados
 
 **Contexto:** staging e produção precisam de execução reproduzível e isolada.
-**Decisão:** construir imagem Docker imutável, armazená-la no ECR e executar a API no ECS Fargate atrás de ALB, com PostgreSQL no RDS e recursos descritos em AWS CDK.
-**Consequências:** migrations precisam anteceder a atualização do serviço; dados e segredos ficam fora da imagem.
+**Decisão:** hospedar a API e o PostgreSQL no Railway, usando `backend-staging` com `Postgres-Staging` para validação e `backend-prod` com `Postgres-Production` para o ambiente usado pelos clientes.
+**Consequências:** o deploy e a administração ficam mais simples; migrations continuam sendo uma etapa controlada; dados e segredos permanecem fora da imagem. Os artefatos AWS/CDK preservados no backend são legados e não representam a infraestrutura atual.
 
 ## ADR007 — Integrações externas por providers e fallback
 
@@ -55,6 +55,12 @@ Registros públicos das decisões observadas até 01/10/2026. ADR001 a ADR004 pr
 **Contexto:** feed, perfis e clubes criam superfícies sociais.
 **Decisão:** centralizar visibilidade, bloqueios, denúncias, filtro de conteúdo e ciclo de exclusão no backend.
 **Consequências:** os clientes não podem inferir acesso apenas pela UI; toda consulta pública deve aplicar as mesmas políticas.
+
+## ADR009 — Analytics fora do caminho transacional
+
+**Contexto:** o projeto precisa consultar e explorar dados sem transformar ferramentas analíticas em dependências do aplicativo.
+**Decisão:** usar Metabase para dashboards e consultas e Databricks para exploração e análise, ambos fora do fluxo normal de requisições.
+**Consequências:** a API e o PostgreSQL no Railway continuam suficientes para o funcionamento do BookLog; indisponibilidade das ferramentas analíticas não interrompe o aplicativo.
 
 ---
 

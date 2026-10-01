@@ -1,33 +1,35 @@
 # Diagrama de implantação
 
-Topologia implementada, sem identificadores, endereços ou nomes internos da conta cloud.
+Topologia atual, sem credenciais, endereços privados ou identificadores internos.
+
 ```mermaid
-flowchart LR
+flowchart TB
   subgraph Clients["Dispositivos"]
     iOS["iOS"]
     Android["Android"]
   end
-  subgraph AWS["AWS"]
-    ALB["Application Load Balancer"]
-    ECS["ECS Fargate\ncontainer da API"]
-    RDS[("RDS PostgreSQL")]
-    Secrets["Secrets Manager"]
-    ECR["ECR"]
-    Logs["Logs e métricas"]
-    ALB --> ECS
-    ECS --> RDS
-    Secrets --> ECS
-    ECR --> ECS
-    ECS --> Logs
+
+  subgraph Railway["Railway"]
+    Prod["backend-prod\nAPI BookLog"] --> ProdDB[("Postgres-Production")]
+    Staging["backend-staging\nAPI BookLog"] --> StagingDB[("Postgres-Staging")]
+    Metabase["Metabase\ndashboards e consultas"]
+    ProdDB -.-> Metabase
+    StagingDB -.-> Metabase
   end
-  iOS -->|HTTPS| ALB
-  Android -->|HTTPS| ALB
-  Providers["Serviços externos"] <-->|HTTPS| ECS
-  GitHub["GitHub Actions\nOIDC + CI/CD"] -->|imagem e revisão de serviço| ECR
-  GitHub -->|migration controlada| ECS
+
+  iOS -->|HTTPS / REST| Prod
+  Android -->|HTTPS / REST| Prod
+  Prod <--> Providers["Google Books · Open Library\nAmazon Creators · Google/Apple OAuth · IA"]
+  Staging <--> Providers
+  ProdDB -.-> Databricks["Databricks\nexploração e análise"]
+  StagingDB -.-> Databricks
 ```
 
-Staging e produção usam configurações separadas. O pipeline valida a revisão exata, constrói uma imagem imutável, executa a migration como tarefa única, atualiza o serviço e verifica readiness. O banco não é exposto diretamente aos clientes.
+O fluxo transacional é **usuário → iOS/Android → backend no Railway → PostgreSQL → resposta → aplicativo**. As integrações externas são chamadas pelo backend, não diretamente pelos clientes.
+
+Staging e produção usam serviços e bancos separados. Alterações são validadas em `backend-staging` com `Postgres-Staging` antes de chegarem a `backend-prod` e `Postgres-Production`. As migrations são executadas como etapa controlada, e o endpoint `/v1/health/ready` verifica a conexão com o banco.
+
+Metabase consulta os bancos para dashboards e análises. Databricks é usado para exploração analítica por meio do plano de estudante e fica fora do caminho transacional: sua indisponibilidade não impede o funcionamento do aplicativo. Os bancos não são expostos diretamente aos clientes.
 
 No desenvolvimento local, Docker Compose oferece API e PostgreSQL. Em dispositivo físico, a URL deve apontar para um host alcançável; `localhost` no dispositivo não representa a máquina do backend.
 
