@@ -1,19 +1,35 @@
 # Diagrama de implantação
 
-Topologia proposta para teste integrado. Não representa infraestrutura publicada.
+Topologia implementada, sem identificadores, endereços ou nomes internos da conta cloud.
 ```mermaid
 flowchart LR
-  subgraph Device["Dispositivo / simulador"]
-    App["Aplicativo iOS"]
+  subgraph Clients["Dispositivos"]
+    iOS["iOS"]
+    Android["Android"]
   end
-  subgraph Host["Ambiente de desenvolvimento / teste"]
-    API["API NestJS :3000"]
-    DB[("PostgreSQL :5432")]
-    API -->|Rede interna| DB
+  subgraph AWS["AWS"]
+    ALB["Application Load Balancer"]
+    ECS["ECS Fargate\ncontainer da API"]
+    RDS[("RDS PostgreSQL")]
+    Secrets["Secrets Manager"]
+    ECR["ECR"]
+    Logs["Logs e métricas"]
+    ALB --> ECS
+    ECS --> RDS
+    Secrets --> ECS
+    ECR --> ECS
+    ECS --> Logs
   end
-  App -->|HTTP em desenvolvimento controlado| API
+  iOS -->|HTTPS| ALB
+  Android -->|HTTPS| ALB
+  Providers["Serviços externos"] <-->|HTTPS| ECS
+  GitHub["GitHub Actions\nOIDC + CI/CD"] -->|imagem e revisão de serviço| ECR
+  GitHub -->|migration controlada| ECS
 ```
-Para exposição remota, usar HTTPS e restringir o banco à rede interna. Configurar URL da API conforme simulador/dispositivo; localhost no dispositivo não aponta para a máquina do backend.
+
+Staging e produção usam configurações separadas. O pipeline valida a revisão exata, constrói uma imagem imutável, executa a migration como tarefa única, atualiza o serviço e verifica readiness. O banco não é exposto diretamente aos clientes.
+
+No desenvolvimento local, Docker Compose oferece API e PostgreSQL. Em dispositivo físico, a URL deve apontar para um host alcançável; `localhost` no dispositivo não representa a máquina do backend.
 
 ---
 

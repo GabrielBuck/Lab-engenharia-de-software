@@ -1,5 +1,7 @@
 # Primeira entrega — BookLog
 
+> Documento histórico da baseline de 17/09/2026. O produto evoluiu além deste recorte; consulte o [estado atual](../estado-atual.md).
+
 **Disciplina:** Laboratório de Engenharia de Software
 
 **Equipe:** Gabriel Nottoli Buck (10425384) e Julia Andrade (10427828)
@@ -57,6 +59,6 @@ O recorte cobre RF001 a RF007. Resenhas, clubes, empréstimos e recomendações 
 
 ## Continuidade do projeto
 
-O [planejamento do próximo ciclo](../07-sprints/sprint-02.md) organiza a integração do fluxo principal e a verificação dos critérios de aceite.
+Na baseline, o próximo ciclo planejava integrar o fluxo principal. O registro da [Sprint 02](../07-sprints/sprint-02.md) foi atualizado posteriormente com a sincronização do produto real.
 
 [Voltar ao índice da documentação](../README.md) · [Página do projeto](../../README.md)

@@ -2,24 +2,44 @@
 
 ## Contexto
 
-O BookLog conecta um aplicativo iOS à API REST e à persistência. A referência existente usa NestJS, TypeScript, JWT, bcrypt e PostgreSQL, com interfaces de repositório e adapters em memória.
+O BookLog conecta aplicativos nativos iOS e Android a uma API REST central. O backend usa NestJS/TypeScript, JWT, bcrypt, validação declarativa e PostgreSQL. Interfaces de repositório separam regras de negócio da persistência; adapters em memória apoiam testes isolados e PostgreSQL sustenta os ambientes persistentes.
 
-## Arquitetura proposta para a disciplina
+## Arquitetura implementada
 
-Monólito modular em camadas. Controllers recebem HTTP e validam entradas; services aplicam regras de negócio; repositories abstraem persistência. O aplicativo usa os contratos da API. Esta organização não é uma alegação de adoção integral de Clean Architecture.
+O backend é um monólito modular em camadas. Controllers expõem o contrato HTTP, DTOs validam entradas, services aplicam regras e repositories abstraem dados. Os clientes mantêm suas próprias camadas de apresentação, domínio e acesso remoto, mas compartilham a mesma fonte de verdade no backend.
 
 ## Responsabilidades
 
 | Componente | Responsabilidade | Dependência |
 | --- | --- | --- |
-| Auth | Cadastro e sessão | Repositório de usuários |
-| Books | Catálogo e busca | Repositório de livros; integração externa se necessária |
-| Library | Associação, status e progresso | Usuário autenticado e livros |
-| Persistência | Consultas e gravações | PostgreSQL no ambiente persistente |
+| Clientes iOS e Android | Interface, navegação, estado e adaptação dos DTOs | Contrato REST versionado |
+| Auth e Users | Identidade, sessão, OAuth, 2FA, preferências e ciclo da conta | Usuários, tokens e email |
+| Books e Catalog | Busca, resolução de edições, detalhes e compra | PostgreSQL e provedores de catálogo |
+| Library | Status, progresso, histórico, estantes, estatísticas e importações | Usuário autenticado e livros |
+| Feed, Reviews e Social | Publicações, avaliações, comentários, curtidas e relações | Visibilidade, usuários e livros |
+| Clubs e Loans | Comunidades, metas, ranking e empréstimos | Usuários, livros e notificações |
+| Trust & Safety | Privacidade, bloqueios, denúncias e moderação | Auth, Visibility e persistência |
+| Persistência | Consultas, constraints, índices e migrations | PostgreSQL |
+| Entrega | Build, testes, imagem imutável, migration e deploy | GitHub Actions, ECR, ECS e RDS |
 
-## Limites
+## Fluxo end-to-end
 
-O recorte não requer microsserviços, IA, clubes ou busca externa na primeira demonstração. Memória serve para desenvolvimento e não satisfaz durabilidade. Segredos devem ser configurados por ambiente e nunca versionados. Não há deploy realizado por este repositório.
+1. O leitor executa uma ação em iOS ou Android.
+2. O cliente envia HTTPS para a API `/v1` com o token quando a rota exige autenticação.
+3. O controller valida o DTO e delega a regra ao service do módulo.
+4. O service consulta repositories e, quando necessário, provedores externos.
+5. O PostgreSQL aplica integridade e persiste o estado.
+6. A resposta tipada volta ao cliente, que atualiza sua interface.
+
+Esse fluxo substitui, para a disciplina, uma demonstração artificial de “Hello World”: cadastro, busca, biblioteca, avaliações e interações sociais já atravessam as camadas reais.
+
+## Integrações externas
+
+O catálogo pode resolver dados por Open Library, Google Books e Amazon Creators, com fallback e proveniência. Apple/Google apoiam OAuth, o provedor de email atende recuperação/2FA e Gemini pode apoiar recursos de anotações. Todas as integrações são configuráveis; ausência de uma credencial opcional deve degradar a capacidade correspondente sem revelar segredo.
+
+## Limites públicos
+
+Este repositório não contém o código executável, nomes de recursos cloud, URLs privadas, IDs de conta ou valores de ambiente. O [ambiente de desenvolvimento](../08-operacao/ambiente-desenvolvimento.md) registra apenas placeholders e comandos públicos.
 
 ## Diagramas
 
@@ -27,10 +47,11 @@ O recorte não requer microsserviços, IA, clubes ou busca externa na primeira d
 - [Pacotes](diagrama-pacotes.md)
 - [Implantação](diagrama-implantacao.md)
 - [Decisões arquiteturais](decisoes-arquiteturais.md)
+- [Contrato da API](contratos-api.md)
 
 ## Integração
 
-Conferir DTOs e Swagger antes de implementar o cliente. O backend distingue status da biblioteca e operações de progresso; o recorte conceitual não autoriza mudar o contrato externo. Repositórios de aplicação permanecem separados até decisão formal de integração.
+Swagger/OpenAPI e DTOs do backend são a referência para os clientes. Mudanças de contrato exigem compatibilidade ou atualização coordenada entre backend, iOS e Android. Os repositórios continuam separados porque têm ciclos de build e distribuição distintos.
 
 ---
 

@@ -1,17 +1,18 @@
 # Diagrama de pacotes
 
-Organização lógica inspirada no backend de referência.
+Organização lógica dos clientes e do backend atual.
 ```mermaid
-flowchart TD
-  API["controllers / DTOs"] --> Services["services / regras"]
-  Services --> Contracts["interfaces de repositories"]
-  Adapters["adapters PostgreSQL / memória"] -.->|implementam| Contracts
-  Root["composição / módulos NestJS"] --> API
-  Root --> Services
-  Root --> Adapters
-  API --> Common["common / auth guards / erros"]
+flowchart LR
+  UI["UI / Navigation"] --> State["ViewModel / State"]
+  State --> ClientRepos["Use cases / Repositories"]
+  ClientRepos --> Client["API client / DTOs"]
+  Client --> API["Controllers / DTO validation"]
+  API --> Services["Services / regras"]
+  Services --> Contracts["Repository interfaces"]
+  Adapters["PostgreSQL adapters"] -.->|implementam| Contracts
+  Services --> Providers["External providers"]
 ```
-Dependências concretas são resolvidas pela composição dos módulos. Evitar regras de negócio no cliente e nos controllers.
+Dependências concretas são resolvidas pela composição dos módulos. Regras críticas de autorização, privacidade e integridade permanecem no backend; os clientes concentram experiência, estado de tela e adaptação do contrato.
 
 ---
 

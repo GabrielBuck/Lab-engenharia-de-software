@@ -1,6 +1,6 @@
 # Requisitos não funcionais
 
-Metas propostas, ainda não medidas. FURPS organiza funcionalidade/segurança (F), usabilidade (U), confiabilidade (R), desempenho (P) e suporte/manutenção (S).
+RNF001 a RNF007 preservam as metas verificáveis da primeira entrega. A implementação oficial já possui cobertura automatizada para parte de segurança, confiabilidade e manutenção, mas testes de usabilidade, acessibilidade e carga continuam exigindo evidência específica.
 
 | ID | Categoria | Meta verificável | Verificação e condição |
 | --- | --- | --- | --- |
@@ -10,9 +10,18 @@ Metas propostas, ainda não medidas. FURPS organiza funcionalidade/segurança (F
 | RNF004 | P / desempenho | p95 da consulta da biblioteca abaixo de 1 segundo, com erro menor que 1% | CT011: 20 usuários concorrentes por 5 minutos, 1.000 livros no catálogo e 100 itens por usuário; registrar hardware, rede e aquecimento de 1 minuto separado |
 | RNF005 | S / manutenção | Cada mudança de requisito mantém links internos válidos e atualiza UC/testes afetados | CI documental e revisão humana da rastreabilidade em cada PR |
 | RNF006 | U / acessibilidade | Telas principais têm rótulos compreensíveis ao VoiceOver e estados não dependem apenas de cor | CT012: navegar cadastro, biblioteca e progresso com leitor de tela no iOS |
-| RNF007 | S / testabilidade | Regras de propriedade, duplicidade e limite de progresso têm testes automatizados de sucesso e falha | Revisão dos testes da aplicação e relatório de execução na futura integração |
+| RNF007 | S / testabilidade | Regras de propriedade, duplicidade e limite de progresso têm testes automatizados de sucesso e falha | Revisão dos testes da aplicação e relatório de execução identificado por commit |
 
-O pipeline atual valida documentos, não certifica segurança, desempenho ou acessibilidade do produto. O adapter em memória não atende à meta de durabilidade de RNF003.
+O pipeline deste portfólio valida documentos, não certifica segurança, desempenho ou acessibilidade do produto. Nos repositórios oficiais, o CI executa lint, testes, cobertura, build, auditoria de dependências, integração PostgreSQL, migrations idempotentes, runtime Docker e síntese/testes de infraestrutura. O adapter em memória continua inadequado para durabilidade; ambientes persistentes usam PostgreSQL.
+
+## Requisitos transversais acrescentados
+
+| ID | Categoria | Meta pública |
+| --- | --- | --- |
+| RNF008 | F / privacidade | Perfil, biblioteca pública, feed e clubes respeitam visibilidade e bloqueios em todas as rotas |
+| RNF009 | R / compatibilidade | Alterações de DTO preservam clientes publicados ou são coordenadas entre backend, iOS e Android |
+| RNF010 | S / entrega | Deploy usa revisão aprovada pela CI, imagem imutável, migration controlada e readiness antes da conclusão |
+| RNF011 | F / segredos | Credenciais são injetadas por ambiente/gerenciador de segredos e nunca incorporadas ao código, imagem ou documentação |
 
 ---
 

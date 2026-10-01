@@ -5,7 +5,7 @@ Cenário UC004; arquitetura proposta. A chamada é conceitual e não substitui o
 ```mermaid
 sequenceDiagram
   actor Leitor
-  participant App as Aplicativo iOS
+  participant App as Aplicativo iOS ou Android
   participant API as Controller + Auth Guard
   participant Servico as Library Service
   participant Repo as Library Repository

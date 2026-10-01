@@ -8,7 +8,7 @@ Leitores distribuem listas de livros e anotações de progresso entre memória, 
 
 ## Público e solução
 
-Leitores que desejam organizar suas leituras em um aplicativo iOS conectado a uma API. O BookLog oferece catálogo, biblioteca pessoal e registro de progresso em um fluxo único.
+Leitores que desejam organizar leituras e interagir com uma comunidade em aplicativos nativos iOS e Android conectados à mesma API. O BookLog oferece catálogo, biblioteca, progresso, avaliações, feed, clubes e descoberta em uma experiência integrada.
 
 ## Escopo inicial
 
@@ -16,7 +16,7 @@ Cadastro, login, busca de livros, adição à biblioteca, alteração de status,
 
 ## Evolução
 
-Resenhas, anotações, recomendações, clubes e empréstimos são possibilidades presentes no contexto mais amplo do BookLog, fora do recorte inicial deste portfólio. Inclusão exige negociação de escopo.
+O recorte da primeira entrega permanece preservado nos casos de uso e wireframes históricos. Resenhas, anotações, recomendações, clubes, empréstimos e recursos sociais já fazem parte do produto atual e estão registrados no [estado sincronizado](../estado-atual.md).
 
 ## Resultados esperados
 

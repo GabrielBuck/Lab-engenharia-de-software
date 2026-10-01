@@ -1,6 +1,6 @@
 # Plano de testes do produto
 
-**Estado de todos os CTs:** planejado / não executado. A CI atual verifica somente documentação.
+**Estado dos CT001–CT012 neste portfólio:** planejado / não executado. A CI local verifica documentação. Os repositórios oficiais mantêm suítes automatizadas separadas; esta página não transforma a existência dessas suítes em evidência de execução deste checkout.
 
 Pré-condições gerais: ambiente isolado, catálogo conhecido, duas contas de teste A/B, registro da versão, configuração e evidências. Não usar dados reais. Limpar dados de teste de modo controlado.
 
@@ -26,3 +26,9 @@ Para cada execução, registrar CT, data, responsável, commit da aplicação, d
 ## Validação já disponível
 
 `node scripts/validate-docs.mjs` verifica arquivos essenciais, links locais e presença dos IDs rastreados. Não verifica links externos, semântica de UML, conformidade acadêmica ou comportamento da aplicação.
+
+## Cobertura automatizada no projeto oficial
+
+O backend auditado contém testes unitários e suítes de integração para API, ciclo de autenticação/2FA, importação CSV, resolução de catálogo, moderação, segurança, persistência PostgreSQL, eficiência e regressões. O CI também valida build, migrations, container e infraestrutura. Android e iOS possuem testes de domínio/fluxo e compatibilidade de contratos em seus próprios repositórios.
+
+Resultados e contagens devem ser citados apenas a partir de uma execução identificada por commit. Este portfólio registra a arquitetura de validação, não copia relatórios que possam conter configuração interna.

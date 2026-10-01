@@ -1,6 +1,6 @@
 # Requisitos funcionais
 
-Especificação de requisitos v0.1. Origem: visão do produto e contratos do backend de referência. Os critérios abaixo descrevem o comportamento exigido, não resultados de testes da implementação.
+Especificação pública sincronizada em 01/10/2026 com os contratos implementados no backend e consumidos pelos clientes iOS e Android. RF001 a RF007 formam a baseline da primeira entrega; os requisitos seguintes registram capacidades que já existem no produto oficial.
 
 ## RF001 — Cadastrar usuário
 
@@ -58,9 +58,28 @@ Especificação de requisitos v0.1. Origem: visão do produto e contratos do bac
 - **Critério de aceite:** Filtros retornam apenas itens do usuário no status escolhido; biblioteca vazia oferece caminho para busca.
 - **Rastreio:** UC005 / CT007.
 
+## Capacidades implementadas após a baseline
+
+| ID | Capacidade | Critério observável atual | Componente principal |
+| --- | --- | --- | --- |
+| RF008 | Avaliar e resenhar livros | Criar, editar e excluir review; nota válida usa incrementos de 0,5 entre 0,5 e 5 | Reviews |
+| RF009 | Publicar no feed | Criar, consultar, editar e excluir post; interagir por curtidas e comentários | Feed |
+| RF010 | Manter perfil e relações sociais | Consultar perfil conforme visibilidade; seguir, desfazer, aceitar ou rejeitar relações | Users / Social / Public Profile |
+| RF011 | Participar de clubes de leitura | Descobrir/criar clube, gerenciar entrada, membros, convites, mensagens, posts, metas, progresso e ranking conforme permissão | Clubs |
+| RF012 | Registrar anotações | Criar, listar, editar e excluir anotações vinculadas a um item de biblioteca | Annotations |
+| RF013 | Receber recomendações | Obter livros ordenados por sinais do leitor e registrar eventos de feedback | Recommendations |
+| RF014 | Gerenciar empréstimos | Registrar empréstimo a um amigo, acompanhar estado e confirmar devolução | Loans |
+| RF015 | Receber notificações | Listar notificações, marcar leitura e registrar token de push | Notifications |
+| RF016 | Importar biblioteca | Processar arquivo suportado, acompanhar o job e resolver correspondências pendentes sem duplicar títulos | Imports |
+| RF017 | Compartilhar leitura | Gerar composição visual a partir de livro, nota e estado reais, sem fabricar estatísticas | Clientes iOS / Android |
+| RF018 | Proteger a comunidade e a conta | Usar perfil privado, bloquear usuário, denunciar conteúdo, moderar texto e solicitar exclusão da conta | Visibility / Blocks / Reports / Auth |
+| RF019 | Capturar livro por imagem | Usar o fluxo de OCR do Android com recuperação explícita para permissão de câmera negada | Cliente Android |
+
+Os grupos acima descrevem o comportamento público, não cada rota interna. O [contrato da API](../06-arquitetura/contratos-api.md) registra as famílias de endpoints e suas regras transversais.
+
 ## Gestão
 
-Usar IDs estáveis. Alterações devem explicar motivo, impacto e decisão em pull request e atualizar a rastreabilidade. Estados: proposto → validado → implementado → verificado. Não avançar sem evidência.
+Usar IDs estáveis. Alterações devem explicar motivo, impacto e decisão em pull request e atualizar a rastreabilidade. Estados documentais: baseline → sincronizado → verificado. Uma capacidade só é descrita como implementada quando há código e contrato correspondentes nos repositórios oficiais; resultados de runtime exigem evidência separada.
 
 ---
 

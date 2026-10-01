@@ -1,23 +1,24 @@
-# Sprint 02 — Planejamento do fluxo principal
+# Sprint 02 — Sincronização com o produto real
 
-**Estado:** planejamento.
-**Objetivo:** demonstrar entrada → busca → biblioteca → progresso com evidências.
+**Estado:** documentação sincronizada em 01/10/2026.
+**Objetivo:** representar a arquitetura e as capacidades reais do BookLog sem duplicar os repositórios oficiais nem expor configuração privada.
 
-| Item | Entrega esperada | Dependência | Aceite |
+| Item | Entrega | Evidência | Aceite |
 | --- | --- | --- | --- |
-| RF001 / RF002 | Cadastro e sessão no ambiente integrado | Contratos Auth e configuração | CT001, CT002 |
-| RF003 / RF004 | Catálogo e adição | Catálogo controlado e sessão | CT003, CT004 |
-| RF005 / RF006 / RF007 | Status, progresso e consulta | Persistência e biblioteca | CT005, CT006, CT007 |
-| RNF001 / RNF003 | Isolamento e durabilidade | Duas contas e PostgreSQL | CT008, CT010 |
-| Design | Protótipo navegável e teste com leitores | Recrutamento e escopo validado | CT009, CT012 |
+| Auditoria | Comparação do portfólio com backend, Android e iOS | [Estado atual](../estado-atual.md) | Referências e delta registrados |
+| Produto | Escopo funcional ampliado para as capacidades implementadas | [Requisitos](../02-requisitos/requisitos-funcionais.md) | Sem funcionalidades inventadas |
+| Domínio e dados | Entidades, relações, migrations e constraints atuais | [Modelagem](../05-modelagem/modelo-dominio.md) | Coerente com PostgreSQL oficial |
+| Arquitetura | Dois clientes, API modular, banco, integrações e AWS | [Visão arquitetural](../06-arquitetura/visao-arquitetural.md) | Fluxo end-to-end representado |
+| Contratos | Famílias de endpoints e regras transversais | [Contrato da API](../06-arquitetura/contratos-api.md) | Sem URLs ou credenciais privadas |
+| Qualidade | CI documental e referência às validações oficiais | [Plano de testes](../../tests/plano-testes.md) | Links e rastreabilidade válidos |
 
 ## Definição de pronto
 
-Critérios demonstrados, testes pertinentes executados, revisão por outro integrante e documentos atualizados. Registrar evidência e limitações; não marcar pronto apenas por haver um endpoint.
+Referências oficiais identificadas, delta revisado, documentação coerente, validação local aprovada e ausência de segredos confirmada. A conclusão documental não afirma que os aplicativos foram recompilados neste repositório.
 
 ## Riscos
 
-Diferença entre proposta e contrato atual; dados de teste insuficientes; disponibilidade do ambiente iOS. Negociar escopo antes de iniciar, sem declarar entregas antecipadamente.
+Divergência futura entre três repositórios de implementação e o portfólio; contratos em evolução; dependência de serviços externos. Mitigação: registrar snapshots, atualizar a matriz por blocos funcionais e nunca copiar valores de ambiente.
 
 ---
 

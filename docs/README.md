@@ -1,8 +1,8 @@
 # Documentação do BookLog
 
-Os artefatos estão organizados pela sequência de trabalho: concepção, especificação, interação, modelagem e arquitetura.
+Os artefatos preservam a primeira entrega e registram o estado atual auditado nos repositórios oficiais.
 
-**[Guia da primeira entrega](entregas/primeira-entrega.md)** · **[Página do projeto](../README.md)**
+**[Estado atual](estado-atual.md)** · **[Guia da primeira entrega](entregas/primeira-entrega.md)** · **[Página do projeto](../README.md)**
 
 ## 01 · Visão do produto
 
@@ -12,7 +12,7 @@ Os artefatos estão organizados pela sequência de trabalho: concepção, especi
 
 ## 02 · Requisitos
 
-- [Requisitos funcionais](02-requisitos/requisitos-funcionais.md) — RF001 a RF007 e critérios de aceite.
+- [Requisitos funcionais](02-requisitos/requisitos-funcionais.md) — baseline RF001–RF007 e capacidades atuais RF008–RF019.
 - [Requisitos não funcionais](02-requisitos/requisitos-nao-funcionais.md) — metas de qualidade pela organização FURPS.
 - [Regras de negócio](02-requisitos/regras-negocio.md) — invariantes e restrições.
 - [Stakeholders](02-requisitos/stakeholders.md) — interesses e atividades de levantamento.
@@ -36,6 +36,7 @@ Os artefatos estão organizados pela sequência de trabalho: concepção, especi
 ## 05 · Modelagem
 
 - [Modelo de domínio](05-modelagem/modelo-dominio.md) — entidades, relações e invariantes.
+- [Modelo de dados](05-modelagem/modelo-dados.md) — grupos de tabelas, constraints e migrations.
 - [Sequência de registro de progresso](05-modelagem/diagrama-sequencia/registrar-progresso.md) — interação entre cliente, API e persistência.
 
 ## 06 · Arquitetura
@@ -45,11 +46,16 @@ Os artefatos estão organizados pela sequência de trabalho: concepção, especi
 - [Pacotes](06-arquitetura/diagrama-pacotes.md).
 - [Implantação](06-arquitetura/diagrama-implantacao.md).
 - [Decisões arquiteturais](06-arquitetura/decisoes-arquiteturais.md) — contexto, alternativas e consequências.
+- [Contratos da API](06-arquitetura/contratos-api.md) — convenções e famílias de endpoints.
 
 ## 07 · Processo e qualidade
 
 - [Sprint 01](07-sprints/sprint-01.md) — artefatos produzidos.
-- [Sprint 02](07-sprints/sprint-02.md) — planejamento do fluxo integrado.
+- [Sprint 02](07-sprints/sprint-02.md) — sincronização com o produto real.
 - [Plano de testes](../tests/plano-testes.md) — CT001 a CT012.
 - [Contribuição](../CONTRIBUTING.md) — práticas de colaboração.
 - [Fontes técnicas](fontes-e-premissas.md).
+
+## 08 · Operação
+
+- [Ambiente de desenvolvimento](08-operacao/ambiente-desenvolvimento.md) — execução local, configuração segura e CI/CD.

@@ -1,19 +1,20 @@
 # Diagrama de componentes
 
-Visão lógica proposta do recorte; integração externa de catálogo é opcional.
+Visão lógica do sistema atual, reduzida aos limites relevantes para exposição pública.
 ```mermaid
 flowchart LR
-  App["Aplicativo iOS"] -->|REST /v1| API["Controllers + autenticação"]
-  API --> Auth["Auth Service"]
-  API --> Books["Books Service"]
-  API --> Library["Library Service"]
-  Auth --> UsersRepo["Users Repository"]
-  Books --> BooksRepo["Books Repository"]
-  Library --> LibraryRepo["Library Repository"]
-  Library --> Books
-  UsersRepo --> DB[("PostgreSQL")]
-  BooksRepo --> DB
-  LibraryRepo --> DB
+  iOS["BookLog iOS\nSwift / SwiftUI"] -->|HTTPS REST /v1| API["API NestJS"]
+  Android["BookLog Android\nKotlin / Compose"] -->|HTTPS REST /v1| API
+  API --> Identity["Auth · Users · Visibility"]
+  API --> Reading["Books · Library · Reviews\nAnnotations · Imports"]
+  API --> Community["Feed · Social · Clubs\nLoans · Notifications · Reports"]
+  API --> Discovery["Catalog · Recommendations · AI"]
+  Identity --> Repositories["Repository interfaces"]
+  Reading --> Repositories
+  Community --> Repositories
+  Discovery --> Repositories
+  Repositories --> DB[("PostgreSQL")]
+  Discovery --> Providers["Catálogo · OAuth · Email · IA"]
 ```
 
 ---
