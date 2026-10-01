@@ -4,41 +4,90 @@
 
 [![Documentação](https://github.com/GabrielBuck/Lab-engenharia-de-software/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/GabrielBuck/Lab-engenharia-de-software/actions/workflows/ci.yml)
 
-**Laboratório de Engenharia de Software · Primeira entrega**
+**Portfólio público · Laboratório de Engenharia de Software · Snapshot 01/10/2026**
 
-BookLog é um aplicativo para organizar livros desejados, em leitura e concluídos. Este repositório reúne a especificação do produto e os artefatos de engenharia que orientam seu desenvolvimento.
+BookLog é uma plataforma mobile para organizar leituras e conectar leitores. O produto combina biblioteca pessoal, catálogo, avaliações, feed social, clubes, recomendações e recursos de segurança em clientes nativos iOS e Android apoiados por uma API central.
 
-**[Conheça a primeira entrega](docs/entregas/primeira-entrega.md)** · **[Explore a documentação](docs/README.md)** · **[Consulte a rastreabilidade](docs/02-requisitos/rastreabilidade.md)**
+Este repositório não é um “Hello World” nem um fork da implementação. Ele representa publicamente o estado funcional e arquitetural do projeto oficial, preservando a documentação acadêmica, a rastreabilidade e os limites de segurança.
 
-## O projeto
+**[Estado atual e delta](docs/estado-atual.md)** · **[Arquitetura](docs/06-arquitetura/visao-arquitetural.md)** · **[Contrato da API](docs/06-arquitetura/contratos-api.md)** · **[Documentação completa](docs/README.md)**
 
-Listas dispersas e registros de progresso desconectados dificultam escolher e retomar uma leitura. O BookLog conecta descoberta, organização e acompanhamento em uma biblioteca pessoal.
+## O produto hoje
 
-O recorte inicial contempla sete funcionalidades: cadastro, autenticação, busca de livros, adição à biblioteca, alteração de status, registro de progresso e consulta da biblioteca.
+- cadastro, sessão, OAuth, recuperação de senha e autenticação em dois fatores;
+- catálogo com resolução de livros, detalhes, tendências, categorias e compra afiliada;
+- biblioteca com status, progresso, histórico, estatísticas, estantes e importação CSV;
+- avaliações e reviews com notas em incrementos de meia estrela;
+- feed com posts, imagens, comentários e curtidas;
+- perfis, seguidores, amizades, privacidade, bloqueios e denúncias;
+- clubes com membros, convites, mensagens, posts, metas, progresso e ranking;
+- empréstimos entre amigos, anotações, notificações e recomendações;
+- compartilhamento visual nos clientes e fluxo de OCR no Android.
+
+O [mapa de requisitos](docs/02-requisitos/requisitos-funcionais.md) distingue a baseline da primeira entrega das capacidades sincronizadas depois dela.
+
+## Arquitetura
 
 ```mermaid
 flowchart LR
-    A["Entrar"] --> B["Buscar livro"]
-    B --> C["Adicionar à biblioteca"]
-    C --> D["Registrar progresso"]
-    D --> E["Consultar leituras"]
+  iOS["iOS\nSwift / SwiftUI"] -->|HTTPS / REST| ALB["AWS ALB"]
+  Android["Android\nKotlin / Compose"] -->|HTTPS / REST| ALB
+  ALB --> API["API NestJS\nECS Fargate"]
+  API --> DB[("PostgreSQL\nRDS")]
+  API <--> External["Catálogo · OAuth\nEmail · IA"]
+  CI["GitHub Actions"] -->|CI/CD + OIDC| API
 ```
 
-## Primeira entrega
+O backend é um monólito modular em camadas: controllers e DTOs formam a fronteira HTTP, services concentram regras de negócio e repositories abstraem PostgreSQL/adapters de teste. A infraestrutura usa imagem Docker imutável, ECR, ECS Fargate, ALB, RDS, Secrets Manager e recursos definidos com AWS CDK.
 
-A entrega apresenta a concepção e a especificação do BookLog, com critérios de aceite e vínculos entre requisitos, modelos e testes.
+## Componentes oficiais auditados
 
-| Frente | Conteúdo | Acesso |
+| Componente | Stack | Referência deste snapshot |
 | --- | --- | --- |
-| Produto | Problema, escopo, proposta de valor e duas personas | [Visão do produto](docs/01-visao-produto/visao-produto.md) |
-| Requisitos | 7 RF, 7 RNF, 7 regras de negócio e rastreabilidade | [Requisitos](docs/02-requisitos/requisitos-funcionais.md) |
-| Casos de uso | 5 narrativas com fluxos principais, alternativas e diagrama UML | [Casos de uso](docs/03-casos-de-uso/README.md) |
-| Design | Jornada e 4 wireframes de baixa fidelidade | [Wireframes](docs/04-design/wireframes/README.md) |
-| Modelagem | Classes de domínio e sequência de atualização de progresso | [Modelo de domínio](docs/05-modelagem/modelo-dominio.md) |
-| Arquitetura | Componentes, pacotes, implantação e 4 decisões arquiteturais | [Arquitetura](docs/06-arquitetura/visao-arquitetural.md) |
-| Processo e qualidade | Registro documental, planejamento e 12 cenários de teste | [Primeira entrega](docs/entregas/primeira-entrega.md) |
+| Backend | NestJS, TypeScript, PostgreSQL, Docker, AWS CDK | `a2852bc` |
+| Android | Kotlin, Jetpack Compose, MVVM/Clean Architecture, Hilt, Retrofit | `b4ed80f` |
+| iOS | Swift, SwiftUI, repositórios e serviços tipados | `cafaf44` |
 
-Os artefatos especificam o comportamento esperado. Os wireframes são conceituais e o plano de testes descreve cenários de verificação; a CI valida a documentação. A implementação de referência é mantida no [backend do BookLog](https://github.com/Bin4ryLibr4ry/booklog-backend).
+Os hashes servem como evidência temporal da auditoria, não como submodules. A fonte da verdade continua nos repositórios oficiais da organização `Bin4ryLibr4ry`.
+
+## Modelo e contratos
+
+- [Modelo de domínio](docs/05-modelagem/modelo-dominio.md)
+- [Modelo de dados e migrations](docs/05-modelagem/modelo-dados.md)
+- [Famílias de endpoints](docs/06-arquitetura/contratos-api.md)
+- [Decisões arquiteturais](docs/06-arquitetura/decisoes-arquiteturais.md)
+- [Matriz de rastreabilidade](docs/02-requisitos/rastreabilidade.md)
+
+## Ambiente de desenvolvimento
+
+Para validar este portfólio:
+
+```bash
+git clone https://github.com/GabrielBuck/Lab-engenharia-de-software.git
+cd Lab-engenharia-de-software
+node scripts/validate-docs.mjs
+```
+
+Requer Node.js 22 ou superior e não instala dependências. O guia de [ambiente de desenvolvimento](docs/08-operacao/ambiente-desenvolvimento.md) registra os comandos reais do backend, Android/iOS e as categorias de configuração. O arquivo [`.env.example`](.env.example) contém somente placeholders; valores reais nunca pertencem a este repositório.
+
+## Organização
+
+```text
+docs/
+├── estado-atual.md             Snapshot, referências e matriz de evolução
+├── entregas/                   Registro histórico das entregas
+├── 01-visao-produto/           Problema, valor e personas
+├── 02-requisitos/              Requisitos, regras e rastreabilidade
+├── 03-casos-de-uso/            Recorte narrativo da primeira entrega
+├── 04-design/                  Jornada e wireframes históricos
+├── 05-modelagem/               Domínio e dados persistentes
+├── 06-arquitetura/             Componentes, contratos, implantação e ADRs
+├── 07-sprints/                 Evolução documental
+└── 08-operacao/                Ambiente e fluxo de entrega
+tests/                          Plano público de verificação
+scripts/                        Validação documental
+.github/workflows/              CI do portfólio
+```
 
 ## Equipe
 
@@ -47,49 +96,8 @@ Os artefatos especificam o comportamento esperado. Os wireframes são conceituai
 | Gabriel Nottoli Buck | 10425384 |
 | Julia Andrade | 10427828 |
 
-## Tecnologias
+## Segurança e limites
 
-| Camada | Tecnologia |
-| --- | --- |
-| Cliente de referência | Aplicativo iOS |
-| Backend de referência | NestJS, TypeScript, REST, JWT e bcrypt |
-| Persistência de referência | PostgreSQL e adapter em memória |
-| Artefatos | Markdown, Mermaid e SVG |
-| Validação documental | Node.js 22 e GitHub Actions |
+O portfólio não publica segredos, dados pessoais, URLs internas, IDs de conta cloud, certificados, bancos ou logs. Também não duplica o código dos repositórios oficiais, evitando uma quarta implementação divergente. Veja [fontes, premissas e limites](docs/fontes-e-premissas.md).
 
-## Navegação e execução
-
-A documentação pode ser consultada diretamente no GitHub, incluindo os diagramas Mermaid e wireframes SVG. O [índice](docs/README.md) oferece acesso a todos os artefatos; o [roteiro da primeira entrega](docs/entregas/primeira-entrega.md) organiza a apresentação.
-
-Para validar localmente:
-
-```bash
-git clone https://github.com/GabrielBuck/Lab-engenharia-de-software.git
-cd Lab-engenharia-de-software
-node scripts/validate-docs.mjs
-```
-
-Requer Node.js 22 ou superior, sem instalação de dependências npm. A mesma verificação é executada em pushes e pull requests.
-
-Para executar a API, consulte as [instruções do backend](https://github.com/Bin4ryLibr4ry/booklog-backend#como-rodar-localmente).
-
-## Organização
-
-```text
-docs/
-├── README.md                  Índice dos artefatos
-├── entregas/                  Guia da primeira entrega
-├── 01-visao-produto/           Problema, valor e personas
-├── 02-requisitos/              Especificação e rastreabilidade
-├── 03-casos-de-uso/            UML e narrativas
-├── 04-design/                 Jornada e wireframes
-├── 05-modelagem/              Domínio e sequência
-├── 06-arquitetura/             Visões e decisões
-└── 07-sprints/                 Registro e planejamento
-tests/                         Plano de testes
-assets/                        Identidade visual e índice de diagramas
-scripts/                       Validação documental
-.github/workflows/             Integração contínua
-```
-
-O [guia de contribuição](CONTRIBUTING.md) descreve o fluxo de trabalho. As [fontes](docs/fontes-e-premissas.md) registram a origem das referências técnicas.
+O [guia de contribuição](CONTRIBUTING.md) descreve o fluxo de atualização e revisão.

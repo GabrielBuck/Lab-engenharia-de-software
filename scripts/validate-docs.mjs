@@ -13,8 +13,9 @@ function walk(dir) {
 }
 const required = [
   'README.md', 'CONTRIBUTING.md', '.gitignore',
-  '.github/workflows/ci.yml', 'docs/fontes-e-premissas.md',
+  '.github/workflows/ci.yml', '.env.example', 'docs/fontes-e-premissas.md',
   'docs/README.md', 'docs/entregas/primeira-entrega.md', 'assets/booklog-cover.svg',
+  'docs/estado-atual.md', 'docs/08-operacao/ambiente-desenvolvimento.md',
   'docs/01-visao-produto/visao-produto.md',
   'docs/02-requisitos/requisitos-funcionais.md',
   'docs/02-requisitos/requisitos-nao-funcionais.md',
@@ -22,7 +23,8 @@ const required = [
   'docs/02-requisitos/rastreabilidade.md',
   'docs/03-casos-de-uso/README.md', 'docs/03-casos-de-uso/modelo-casos-uso.svg',
   'docs/04-design/wireframes/README.md', 'docs/05-modelagem/modelo-dominio.md',
-  'docs/06-arquitetura/visao-arquitetural.md',
+  'docs/05-modelagem/modelo-dados.md', 'docs/06-arquitetura/visao-arquitetural.md',
+  'docs/06-arquitetura/contratos-api.md',
   'docs/07-sprints/sprint-01.md', 'docs/07-sprints/sprint-02.md',
   'tests/plano-testes.md'
 ];
@@ -54,7 +56,27 @@ for (const path of markdown) {
     }
   }
 }
+
 const read = path => existsSync(resolve(root, path)) ? readFileSync(resolve(root, path), 'utf8') : '';
+const textFiles = walk(root).filter(path => /\.(?:md|mjs|yml|yaml|json|example|gitignore)$/i.test(path));
+const highConfidenceSecrets = [
+  /AKIA[0-9A-Z]{16}/,
+  /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,
+  /\bgh[pousr]_[A-Za-z0-9]{20,}\b/,
+  /\bAIza[0-9A-Za-z_-]{30,}\b/
+];
+for (const path of textFiles) {
+  const content = readFileSync(path, 'utf8');
+  if (highConfidenceSecrets.some(pattern => pattern.test(content))) {
+    errors.push('Possível segredo de alta confiança: ' + relative(root, path));
+  }
+}
+
+const exampleEnv = read('.env.example');
+for (const key of ['JWT_SECRET', 'DATABASE_URL', 'GOOGLE_CLIENT_ID', 'APPLE_CLIENT_ID', 'GOOGLE_BOOKS_API_KEY', 'GEMINI_API_KEY']) {
+  const match = exampleEnv.match(new RegExp('^' + key + '=(.*)$', 'm'));
+  if (!match || match[1].trim()) errors.push('.env.example deve manter vazio: ' + key);
+}
 const matrix = read('docs/02-requisitos/rastreabilidade.md');
 const requirements = read('docs/02-requisitos/requisitos-funcionais.md');
 const quality = read('docs/02-requisitos/requisitos-nao-funcionais.md');
@@ -70,6 +92,7 @@ function ensureIds(prefix, count, sources) {
   }
 }
 ensureIds('RF', 7, [['requisitos', requirements], ['matriz', matrix], ['casos', cases]]);
+ensureIds('RF', 19, [['requisitos', requirements], ['matriz', matrix]]);
 ensureIds('RNF', 7, [['qualidade', quality], ['matriz', matrix]]);
 ensureIds('UC', 5, [['casos', cases], ['matriz', matrix]]);
 ensureIds('CT', 12, [['plano de testes', tests], ['matriz', matrix]]);

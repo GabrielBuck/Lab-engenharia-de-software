@@ -1,18 +1,20 @@
 # Contribuição
 
-## Fluxo Git proposto
+## Fluxo Git
 
-`main` mantém entregas revisadas; `develop` integra o ciclo; branches curtas `feature/requisitos`, `feature/prototipo`, `feature/modelagem` e `feature/backend` nascem de develop e retornam por PR. Releases revisadas seguem de develop para main.
+`main` mantém a documentação pública revisada. Mudanças usam branches curtas por objetivo e retornam por pull request. O portfólio não recebe cópias diretas do código oficial; cada sincronização registra referências, delta funcional e limites de segurança.
 
 A documentação é publicada em main.
 
 ## Passos
 
-1. Vincular alteração a um requisito ou artefato.
-2. Atualizar documentos relacionados e matriz de rastreabilidade.
-3. Executar `node scripts/validate-docs.mjs`.
-4. Abrir PR com motivo, impacto, evidências.
-5. Solicitar revisão de outro integrante; integrar após aceite.
+1. Auditar a fonte oficial sem alterar seu checkout.
+2. Vincular a alteração a um requisito ou artefato.
+3. Atualizar documentos relacionados, snapshot e rastreabilidade.
+4. Confirmar que nenhum segredo, dado pessoal ou identificador interno foi copiado.
+5. Executar `node scripts/validate-docs.mjs`.
+6. Abrir PR com motivo, impacto, referências e evidências.
+7. Solicitar revisão de outro integrante; integrar após aceite.
 
 ## Commits
 
@@ -21,6 +23,7 @@ docs: adiciona visão do produto
 docs: revisa casos de uso
 feat: implementa cadastro de usuário
 test: verifica isolamento da biblioteca
+docs: sincroniza arquitetura oficial
 ```
 
 ## Qualidade
