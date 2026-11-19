@@ -1,3 +1,5 @@
+# BookLog
+
 ![BookLog — sua vida de leituras em um só lugar](assets/booklog-cover.svg)
 
 **BookLog** é um aplicativo de organização de leituras e comunidade literária, desenvolvido para iOS e Android. Aqui estão as decisões, a arquitetura e os artefatos de **Laboratório de Engenharia de Software**.
