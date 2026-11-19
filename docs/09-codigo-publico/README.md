@@ -1,22 +1,48 @@
-# Código real selecionado — espelho acadêmico
+# Código real do BookLog — recorte acadêmico
 
-São **seis arquivos integrais, sem modificação de conteúdo**, copiados das fontes oficiais para demonstrar tecnologias e decisões de engenharia. Não representam o app completo e podem depender de tipos/módulos privados.
+Seis arquivos pequenos, reproduzidos integralmente das fontes oficiais. Demonstram contratos, validação e organização dos clientes, **não** formam uma aplicação independente.
 
-| Código | Fonte original | O que demonstra |
+## Backend
+
+**NestJS e TypeScript**
+
+| Arquivo | Responsabilidade |
+| --- | --- |
+| [health.service.ts](backend/health.service.ts) | Health check com injeção de configuração |
+| [update-progress.dto.ts](backend/update-progress.dto.ts) | Validação de páginas, duração e tipo de registro |
+
+A API usa controladores HTTP, serviços e DTOs para separar entrada de dados e regras de negócio.
+
+## iOS
+
+**Swift e SwiftUI**
+
+| Arquivo | Responsabilidade |
+| --- | --- |
+| [PaginationDTOs.swift](ios/PaginationDTOs.swift) | Modelo de paginação e parâmetros de busca |
+| [SearchHistoryDTOs.swift](ios/SearchHistoryDTOs.swift) | Contratos de histórico de pesquisa |
+
+Os tipos descrevem a estrutura esperada nas respostas do backend.
+
+## Android
+
+**Kotlin e Jetpack Compose**
+
+| Arquivo | Responsabilidade |
+| --- | --- |
+| [ApiResult.kt](android/ApiResult.kt) | Resultado tipado e mensagem de erro |
+| [BookFormatLabel.kt](android/BookFormatLabel.kt) | Conversão de formato para rótulos visíveis |
+
+Esses arquivos são componentes de apoio de uma aplicação Android maior.
+
+## Proveniência — 19/11/2026
+
+| Projeto oficial privado | Branch | Commit |
 | --- | --- | --- |
-| [HealthService NestJS](backend/health.service.ts) | Backend, src/health/health.service.ts | Injeção de dependência e health check |
-| [UpdateProgressDto NestJS](backend/update-progress.dto.ts) | Backend, src/modules/library/dto/update-progress.dto.ts | Contrato e validação |
-| [PaginationDTOs Swift](ios/PaginationDTOs.swift) | iOS, DTOs/Common/PaginationDTOs.swift | Modelo de paginação tipado |
-| [SearchHistoryDTOs Swift](ios/SearchHistoryDTOs.swift) | iOS, DTOs/Search/SearchHistoryDTOs.swift | Contratos de histórico de busca |
-| [ApiResult Kotlin](android/ApiResult.kt) | Android, core/error/ApiResult.kt | Erros tipados |
-| [BookFormatLabel Kotlin](android/BookFormatLabel.kt) | Android, core/text/BookFormatLabel.kt | Regra de apresentação |
+| Backend: Bin4ryLibr4ry/booklog-backend | main | `27d9511c8ef5c83691b0327cc357e98d3b4d5c1d` |
+| iOS: Bin4ryLibr4ry/BookLogApp-IOS | dev | `ad0e4c2c45584fec692f0f35d66e3f47407dd50f` |
+| Android: Bin4ryLibr4ry/BookLogApp-Android | dev | `0d546307859e89005c47c91f55d254a8a02a6d11` |
 
-## Proveniência das cópias
+Os arquivos copiados preservam o conteúdo original. Não há sincronização automática com os repositórios privados nem redistribuição das partes sensíveis.
 
-- Backend: Bin4ryLibr4ry/booklog-backend, branch main, commit **27d9511c8ef5c83691b0327cc357e98d3b4d5c1d**.
-- iOS: Bin4ryLibr4ry/BookLogApp-IOS, branch dev, commit **ad0e4c2c45584fec692f0f35d66e3f47407dd50f**.
-- Android: Bin4ryLibr4ry/BookLogApp-Android, branch dev, commit **0d546307859e89005c47c91f55d254a8a02a6d11**.
-
-Os repositórios de origem são privados. Não há espelhamento automático e nada desta cópia é enviado de volta à organização. Foram selecionados arquivos sem credenciais, endpoints internos ou dados pessoais.
-
-[Validação e limites](validacao-e-limites.md)
+[Validação e limites](validacao-e-limites.md) · [← Índice](../README.md)

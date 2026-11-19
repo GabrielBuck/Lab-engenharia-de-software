@@ -1,16 +1,20 @@
-name: Documentação
+name: Integridade do portfólio
+
 on:
   push:
+    branches: [main]
   pull_request:
+
 permissions:
   contents: read
+
 jobs:
-  validate-docs:
+  validar:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Validar estrutura, links e rastreabilidade
+      - name: Verificar documentos, links, imagens e referências
         run: node scripts/validate-docs.mjs
