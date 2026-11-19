@@ -18,3 +18,6 @@ jobs:
           node-version: '22'
       - name: Verificar documentos, links, imagens e referências
         run: node scripts/validate-docs.mjs
+
+      - name: Validar SVG como XML
+        run: python3 scripts/validate-svg.py
