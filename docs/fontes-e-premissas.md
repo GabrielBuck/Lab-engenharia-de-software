@@ -1,32 +1,30 @@
-# Fontes, premissas e estado da documentação
+# Fontes e limites da documentação
 
-Baseline inicial: 17/09/2026.
-Sincronização atual: 01/10/2026.
+## Recortes temporais
 
-## Fontes consultadas
+| Data | Registro |
+| --- | --- |
+| 17/09/2026 | Primeira entrega acadêmica, com requisitos e casos de uso iniciais |
+| 01/10/2026 | Sincronização documental com arquitetura e módulos oficiais |
+| 19/11/2026 | Revisão do portfólio, situação de lançamento e implantação Railway |
 
-- Orientação fornecida pelo solicitante: organizar um portfólio em sete frentes, com requisitos, casos narrativos, design, UML, arquitetura e sprints.
-- Confirmação do solicitante: projeto BookLog; integrantes Gabriel Nottoli Buck (RA 10425384) e Julia Andrade (RA 10427828).
-- Baseline da primeira entrega: README, package.json e DTOs de cadastro/biblioteca do backend `5d3dc4a`.
-- Backend oficial auditado em `a2852bc` (`backend/moderation-compatible`): módulos, controllers, DTOs, repositories, migrations, testes, CI/CD e guia de implantação no Railway.
-- Android oficial auditado em `b4ed80f` (`origin/dev`): features, serviços de API, configuração de build, testes e histórico recente.
-- iOS oficial auditado em `cafaf44` (`origin/dev`): features, services/endpoints, DTOs, testes e configuração de schemes.
-- Histórico Git e comparação funcional desde a baseline, sem depender apenas de equivalência de hashes.
+## Fontes de referência
 
-## Premissas
+- Código oficial dos clientes iOS (Swift/SwiftUI) e Android (Kotlin/Compose), e API NestJS/TypeScript, consultados nas branches especificadas em [estado atual](estado-atual.md).
+- Relação de serviços consultada no projeto **BookLog** do Railway: nove serviços em um environment chamado production.
+- Material da apresentação acadêmica de 19/11/2026 para indicadores e marcos de lançamento. [Tratamento dos números](10-resultados/indicadores-2026-11.md).
+- [Requisitos, casos e testes](README.md) produzidos nas entregas anteriores.
 
-- Os repositórios oficiais da organização `Bin4ryLibr4ry` são a fonte da verdade.
-- Este repositório mantém representação documental pública e não duplica o código executável.
-- “Implementado” significa que a capacidade possui código/contrato correspondente no snapshot auditado; não significa que foi reexecutada neste portfólio.
-- O estado de produção não é inferido apenas da existência de código. Staging, release e operação exigem evidências próprias dos repositórios oficiais.
-- A infraestrutura AWS/CDK preservada no backend é histórica; Railway é a infraestrutura oficial atual, conforme confirmação do solicitante e guia de deploy do projeto.
+Os repositórios privados seguem como fonte da verdade para código, testes e operação. O portfólio público documenta a arquitetura e publica **seis arquivos reais e pequenos** para demonstrar implementação, sem reproduzir os produtos integrais.
 
-## Exclusões de segurança
+## Como ler as evidências
 
-Não foram transportados valores de `.env`, credenciais, identificadores de conta, nomes internos adicionais de recursos, URLs privadas, dados de usuários, bancos, logs ou inventários internos. As configurações públicas usam apenas nomes de variáveis e placeholders.
+- **Implementado no código** significa que há módulo ou contrato observado. Não prova disponibilidade para todos os usuários.
+- **Publicado no iOS** é uma condição de distribuição; **Android beta** não equivale a lançamento geral.
+- **Top 6** é marco histórico informado pela equipe; posições de categoria mudam.
+- **Plano de teste** não é evidência de execução.
+- Diagramas e ilustrações são representações explicativas, não capturas exatas das telas do aplicativo.
 
-Consulte a [matriz de sincronização](estado-atual.md) para o delta completo.
+Nenhuma credencial, dado privado de usuário, dump, log operacional ou valor de configuração foi publicado.
 
----
-
-[Índice da documentação](README.md) · [Página do projeto](../README.md)
+[← Índice](README.md)

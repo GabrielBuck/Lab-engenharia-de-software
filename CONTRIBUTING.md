@@ -1,31 +1,21 @@
-# Contribuição
+# Como contribuir
 
-## Fluxo Git
+## Fluxo
 
-`main` mantém a documentação pública revisada. Mudanças usam branches curtas por objetivo e retornam por pull request. O portfólio não recebe cópias diretas do código oficial; cada sincronização registra referências, delta funcional e limites de segurança.
-
-A documentação é publicada em main.
-
-## Passos
-
-1. Auditar a fonte oficial sem alterar seu checkout.
-2. Vincular a alteração a um requisito ou artefato.
-3. Atualizar documentos relacionados, snapshot e rastreabilidade.
-4. Confirmar que nenhum segredo, dado pessoal ou identificador interno foi copiado.
+1. Revisar a fonte de implementação correspondente antes de alterar uma afirmação técnica.
+2. Atualizar requisitos, diagramas e documentação afetados.
+3. Informar a data de qualquer indicador e distinguir histórico de dado atual.
+4. Não publicar credenciais, URLs privadas, dados de usuários, registros internos ou arquivos operacionais.
 5. Executar `node scripts/validate-docs.mjs`.
-6. Abrir PR com motivo, impacto, referências e evidências.
-7. Solicitar revisão de outro integrante; integrar após aceite.
+6. Abrir pull request com motivo e arquivos modificados.
 
-## Commits
+## Organização
 
-```text
-docs: adiciona visão do produto
-docs: revisa casos de uso
-feat: implementa cadastro de usuário
-test: verifica isolamento da biblioteca
-docs: sincroniza arquitetura oficial
-```
+- `main`: documentação acadêmica pública revisada.
+- `docs/`: especificação, arquitetura, evidências e histórico.
+- `assets/`: figuras originais e diagramas.
+- `docs/09-codigo-publico/`: apenas exemplos de código já revisados, com fonte identificada.
 
-## Qualidade
+As alterações neste portfólio não mudam os repositórios privados de implementação. Exemplos de código não são distribuídos como um aplicativo compilável.
 
-Não inventar entrevistas, resultados, integrantes ou aprovações. Preservar autoria e licença das fontes; não versionar segredos, bancos locais, dados pessoais ou dependências geradas.
+[← Página inicial](README.md)

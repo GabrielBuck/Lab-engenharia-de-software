@@ -1,47 +1,52 @@
-# BookLog — Atualização acadêmica de 19/11/2026
+# BookLog — entrega de novembro de 2026
 
-**Laboratório de Engenharia de Software — Gabriel Nottoli Buck e Julia Andrade**
+**Laboratório de Engenharia de Software · Gabriel Nottoli Buck e Julia Andrade**
 
-## Contexto e problema
+## Por que o BookLog existe
 
-O BookLog nasceu de uma hipótese de produto: a experiência de leitura costuma ser fragmentada entre listas, registros de progresso e conversas sobre livros. A plataforma integra descobrir, salvar, ler, avaliar e compartilhar. **Não é um leitor de e-books**; organiza leituras e aproxima pessoas.
+Organizar livros, lembrar onde parou e conversar sobre leituras eram tarefas dispersas. O BookLog reúne descoberta, biblioteca, progresso e comunidade. **Ele não é um leitor de e-books.**
 
-## Uso do ponto de vista de quem nunca viu o aplicativo
+![Fluxo do leitor, da descoberta ao compartilhamento](../../assets/jornada-leitura.svg)
 
-1. Criar conta e perfil.
-2. Buscar por título, autor ou ISBN, consultar detalhes do livro.
-3. Salvar em biblioteca ou estante; registrar status como quero ler, lendo ou lido.
-4. Registrar páginas, metas e histórico de leitura.
-5. Avaliar, publicar resenha e acompanhar o feed.
-6. Interagir com seguidores, amigos, clubes e desafios.
-7. Consultar recomendações e recursos de descoberta quando habilitados na versão do cliente.
+## Como uma pessoa usa o app
 
-**Demonstração para o professor:** buscar um livro, salvar na estante, atualizar o progresso e abrir uma resenha ou clube.
+1. **Entrar:** criar conta e configurar o perfil.
+2. **Encontrar:** buscar um título, autor ou ISBN e ver detalhes.
+3. **Guardar:** adicionar à biblioteca e escolher o status de leitura.
+4. **Acompanhar:** atualizar páginas, histórico e estatísticas.
+5. **Avaliar:** dar nota e escrever resenha.
+6. **Compartilhar:** seguir amigos, publicar e participar de clubes e desafios.
 
-## Engenharia do produto
+O roteiro de demonstração para a disciplina é **buscar → salvar → registrar progresso → interagir**.
 
-- **iOS:** Swift e SwiftUI, cliente nativo publicado.
-- **Android:** Kotlin e Jetpack Compose, cliente nativo em beta.
-- **API:** NestJS, TypeScript e contratos REST com DTOs e autenticação.
-- **Dados:** PostgreSQL, acessado pelo backend, nunca diretamente pelos aplicativos.
-- **Hospedagem:** Railway, serviços e bancos separados por função.
-- **Integrações:** Google Books, Amazon Creators e provedores de login.
-- **Operação:** versionamento, homologação e rotinas de testes; métricas externas à transação normal.
+## Arquitetura do produto
 
-[Arquitetura detalhada](../06-arquitetura/railway-2026-11.md) · [Código real selecionado](../09-codigo-publico/README.md)
+![Clientes nativos, API central e persistência](../../assets/arquitetura-booklog.svg)
 
-## Resultados documentados em 19/11/2026
+| Camada | Solução |
+| --- | --- |
+| iOS | Swift e SwiftUI |
+| Android | Kotlin e Jetpack Compose |
+| API | NestJS, TypeScript, controllers, DTOs e services |
+| Persistência | PostgreSQL, acessado via backend |
+| Hospedagem | Railway, com serviços e bancos próprios para operação e homologação |
+| Fontes externas | Google Books e Amazon Creators, conforme a funcionalidade |
 
-O material acadêmico reuniu **2.555 leitores, 102 clubes e 323 leitores em clubes**. A captura da App Store registrava **4,8/5 em 20 avaliações**. O **Top 6 na categoria Livros do Brasil** é um **pico histórico relatado pelo time**, não posição atual; outra captura já mostrava #21. Os números são datados e não representam acompanhamento em tempo real.
+[Diagrama de implantação real](../06-arquitetura/diagrama-implantacao.md) · [Arquivos reais de código](../09-codigo-publico/README.md)
 
-[Indicadores e metodologia](../10-resultados/indicadores-2026-11.md)
+## Resultados apresentados em 19/11/2026
 
-## Situação de lançamento
+![Leitores, clubes, participantes e nota da App Store](../../assets/indicadores-2026-11.svg)
 
-**iOS disponível na App Store:** https://apps.apple.com/br/app/booklog/id6811496005
+O time registrou um **pico histórico no Top 6 de Livros da App Store brasileira**. Ranking não é fixo; outro registro mostrava #21. A nota de 4,8/5 tinha 20 avaliações na captura. [Metodologia e datas](../10-resultados/indicadores-2026-11.md).
 
-**Android:** testes beta em novembro de 2026, sem anúncio de disponibilidade geral.
+## Disponibilidade
 
-## Escopo público
+**iOS:** [instalar na App Store](https://apps.apple.com/br/app/booklog/id6811496005).  
+**Android:** beta em testes, ainda sem anúncio de lançamento geral.
 
-Esta entrega traz documentação, diagramas e seis arquivos-fonte reais selecionados. Não disponibiliza a base do produto, credenciais, banco, configurações internas nem um quarto app compilável. Os repositórios oficiais da organização não foram alterados. [Qualidade e limites](../09-codigo-publico/validacao-e-limites.md).
+## Engenharia e verificação
+
+A documentação pública cobre requisitos, UML, rastreabilidade, testes planejados, decisões arquiteturais e implantação. Os seis [exemplos de código](../09-codigo-publico/README.md) foram copiados de fontes oficiais e revisados, mas **não formam um aplicativo compilável**. A [validação da documentação](../09-codigo-publico/validacao-e-limites.md) é distinta dos testes de software da operação privada.
+
+[← Índice](../README.md)

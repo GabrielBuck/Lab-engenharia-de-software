@@ -38,19 +38,19 @@ Esse fluxo substitui, para a disciplina, uma demonstração artificial de “Hel
 
 O catálogo pode resolver dados por Open Library, Google Books e Amazon Creators, com fallback e proveniência. Apple/Google apoiam OAuth, o provedor de email atende recuperação/2FA e Gemini pode apoiar recursos de anotações. Essas APIs são chamadas pelo backend, nunca diretamente pelos aplicativos. Todas as integrações são configuráveis; ausência de uma credencial opcional deve degradar a capacidade correspondente sem revelar segredo.
 
-## Ambientes e dados analíticos
+## Serviços e dados analíticos
 
-O Railway hospeda `backend-staging` e `backend-prod`, cada um ligado ao seu próprio PostgreSQL. O ambiente de staging recebe e valida alterações antes da promoção para produção. Metabase acessa os bancos para dashboards e consultas; Databricks apoia exploração e análise de dados, mas nenhum dos dois participa da resposta às requisições do aplicativo.
+O Railway hospeda `booklog-backend` e `booklog-backend-staging`, conectados respectivamente aos serviços `Postgres` e `Postgres-BookLog-Staging`. Ambos estão no environment Railway chamado `production`; a separação funcional ocorre entre serviços e bancos. O cliente publicado usa a API de produção. Metabase acessa os bancos para dashboards e consultas; Databricks apoia exploração e análise de dados, mas nenhum dos dois participa da resposta às requisições do aplicativo.
 
 ## Limites públicos
 
-Este repositório não contém o código executável, credenciais, URLs privadas ou valores de ambiente. O [ambiente de desenvolvimento](../08-operacao/ambiente-desenvolvimento.md) registra apenas placeholders e comandos públicos.
+Este repositório não contém o aplicativo compilável nem credenciais, URLs privadas ou valores de ambiente. Ele publica seis arquivos pequenos e revisados de implementação, com a origem indicada em [código público](../09-codigo-publico/README.md). O [ambiente de desenvolvimento](../08-operacao/ambiente-desenvolvimento.md) registra os comandos confirmados nas fontes.
 
 ## Diagramas
 
 - [Componentes](diagrama-componentes.md)
 - [Pacotes](diagrama-pacotes.md)
-- [Implantação](diagrama-implantacao.md)
+- [Implantação atual](diagrama-implantacao.md)
 - [Decisões arquiteturais](decisoes-arquiteturais.md)
 - [Contrato da API](contratos-api.md)
 

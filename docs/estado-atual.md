@@ -1,54 +1,42 @@
-# Estado atual e sincronização com o BookLog oficial
+# Estado atual do BookLog
 
-**Snapshot público:** 01/10/2026
-**Baseline anterior deste repositório:** `e1ea7d4` / tag `Entrega_1`
+**Data da atualização pública: 19/11/2026.** A primeira entrega foi documentada em 17/09/2026; a sincronização seguinte ocorreu em 01/10/2026. Esta página separa claramente esses recortes.
 
-Este repositório continua sendo o portfólio público de Engenharia de Software. A implementação permanece nos repositórios oficiais, enquanto este espaço registra, de forma auditável e segura, a arquitetura, o domínio, os contratos e as funcionalidades que já existem no BookLog.
+## Produto e lançamento
 
-## Referências auditadas
+| Área | Situação em novembro de 2026 |
+| --- | --- |
+| iOS | Publicado na [App Store](https://apps.apple.com/br/app/booklog/id6811496005) |
+| Android | Beta em testes; não apresentado como lançamento geral |
+| Backend | NestJS e PostgreSQL, em operação no Railway |
+| Infraestrutura | Nove serviços no projeto BookLog e um environment Railway chamado `production` |
+| Homologação | Serviço e banco próprios; não é um segundo environment Railway |
+| Indicadores | [Dados apresentados em 19/11/2026](10-resultados/indicadores-2026-11.md) |
 
-| Componente oficial | Referência auditada | Papel |
+## Evolução de funcionalidades
+
+A baseline acadêmica contemplava **RF001–RF007**: cadastro, login, busca, biblioteca e progresso. A sincronização posterior passou a documentar autenticação ampliada, catálogo e recomendações, biblioteca e estantes, avaliações, feed, amizades e seguidores, clubes, empréstimos, notificações, segurança e privacidade. A especificação completa está nos [requisitos](02-requisitos/requisitos-funcionais.md).
+
+Essa enumeração indica componentes e fluxos identificados nas fontes oficiais; recursos podem ter disponibilidade distinta entre builds de iOS e Android.
+
+## Fonte de implementação consultada
+
+| Projeto | Branch consultada | Commit |
 | --- | --- | --- |
-| Backend | `a2852bc` (`backend/moderation-compatible`) | API NestJS, regras de negócio, persistência, integrações e implantação Railway |
-| Android | `b4ed80f` (`origin/dev`) | Cliente Kotlin/Jetpack Compose |
-| iOS | `cafaf44` (`origin/dev`) | Cliente Swift/SwiftUI |
+| Backend | `main` | `27d9511c8ef5c83691b0327cc357e98d3b4d5c1d` |
+| iOS | `dev` | `ad0e4c2c45584fec692f0f35d66e3f47407dd50f` |
+| Android | `dev` | `0d546307859e89005c47c91f55d254a8a02a6d11` |
 
-O ponto usado na primeira entrega foi o backend `5d3dc4a`, observado em 17/09/2026. Naquele momento, o portfólio documentou apenas cadastro, sessão, catálogo, biblioteca, status e progresso. Esses fluxos continuam válidos, mas representam somente uma parte do sistema atual.
+As versões identificam o recorte dos [arquivos-fonte públicos selecionados](09-codigo-publico/README.md). Os repositórios de implementação continuam privados.
 
-## Matriz da evolução
+## Engenharia e evidência
 
-| Área | Oficial atual | Estado anterior no público | Ação desta sincronização |
-| --- | --- | --- | --- |
-| Autenticação e conta | Cadastro, login, refresh/logout, recuperação de senha, OAuth, 2FA, preferências e exclusão de conta | Parcial | Atualizar requisitos, domínio e contratos |
-| Catálogo de livros | Catálogo persistente, resolução entre provedores, detalhes, categorias, tendências e compra afiliada | Parcial | Documentar provedores e fluxo de resolução sem publicar credenciais |
-| Biblioteca | Status, progresso, histórico de leitura, estatísticas, estantes e importação CSV | Parcial | Expandir domínio, API e rastreabilidade |
-| Avaliações | Reviews e notas em incrementos de meia estrela | Ausente | Incorporar ao escopo atual |
-| Feed social | Posts, imagens, notas, comentários e curtidas | Ausente | Incorporar ao escopo atual |
-| Perfis e relações sociais | Perfil público/privado, seguidores, amigos e solicitações | Ausente | Incorporar ao escopo atual |
-| Clubes | Descoberta, membros, convites, mensagens, posts, metas, progresso, ranking e pontuação | Ausente | Incorporar ao escopo atual |
-| Empréstimos | Empréstimo a amigos, acompanhamento e devolução | Ausente | Incorporar ao escopo atual |
-| Recomendações | Recomendações personalizadas e eventos de feedback | Ausente | Incorporar ao escopo atual |
-| Anotações e apoio de IA | Anotações e geração assistida de resumo/rascunho | Ausente | Documentar como capacidade opcional e configurável |
-| Segurança e confiança | Perfil privado, bloqueio, denúncia, moderação de conteúdo e retenção/exclusão de conta | Ausente | Incorporar requisitos de privacidade e moderação |
-| Clientes | iOS e Android nativos consumindo o mesmo contrato REST | Apenas iOS conceitual | Representar os dois clientes e suas camadas |
-| Persistência | PostgreSQL com migrations incrementais, constraints e índices | Três entidades conceituais | Publicar modelo lógico resumido e histórico de migrations |
-| Implantação | Railway com `backend-staging`/`Postgres-Staging` e `backend-prod`/`Postgres-Production` | CI documental e topologia local proposta | Representar os ambientes atuais sem publicar configuração privada |
-| Dados e analytics | Metabase para dashboards; Databricks para exploração e análise fora do fluxo transacional | Ausente | Explicitar que analytics não é dependência de execução do aplicativo |
+- **Clientes:** Swift/SwiftUI e Kotlin/Jetpack Compose.
+- **Backend:** NestJS/TypeScript, contratos HTTP, DTOs, serviços e repositórios.
+- **Dados:** PostgreSQL; acesso pelo backend.
+- **Railway:** serviços distintos para app em produção, homologação, site, hub e sincronização de catálogo.
+- **Verificação pública:** validação da documentação em CI. Não corresponde a uma execução de testes completos de produção.
 
-## O que permanece fora do repositório público
+[Arquitetura](06-arquitetura/visao-arquitetural.md) · [Implantação confirmada](06-arquitetura/diagrama-implantacao.md) · [Evidências e premissas](fontes-e-premissas.md)
 
-- valores de variáveis de ambiente, tokens, chaves, certificados e credenciais OAuth;
-- identificadores de conta, nomes internos adicionais de recursos, URLs privadas e dados operacionais;
-- dados de usuários, bancos, logs e evidências que possam conter informação pessoal;
-- dumps e inventários internos usados nas validações dos repositórios oficiais;
-- código duplicado dos clientes e do backend, evitando uma cópia divergente da fonte da verdade.
-
-## Limite desta evidência
-
-A sincronização comprova a leitura dos artefatos e do histórico Git dos componentes oficiais. A CI deste repositório valida estrutura, links e rastreabilidade documental; ela não recompila os aplicativos nem substitui os testes executados nos repositórios de implementação.
-
-Consulte a [arquitetura atual](06-arquitetura/visao-arquitetural.md), o [contrato público da API](06-arquitetura/contratos-api.md), o [modelo de dados](05-modelagem/modelo-dados.md) e o [ambiente de desenvolvimento](08-operacao/ambiente-desenvolvimento.md).
-
----
-
-[Índice da documentação](README.md) · [Página do projeto](../README.md)
+[← Índice](README.md)

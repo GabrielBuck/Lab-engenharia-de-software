@@ -1,6 +1,6 @@
 # Decisões arquiteturais
 
-Registros públicos das decisões observadas até 01/10/2026. ADR001 a ADR004 preservam a baseline; os registros seguintes representam a arquitetura implementada.
+Decisões consolidadas até 01/10/2026 e implantação revisada em 19/11/2026. ADR001 a ADR004 preservam a baseline; os registros seguintes representam a arquitetura implementada.
 
 ## ADR001 — Monólito modular em camadas
 
@@ -41,7 +41,7 @@ Registros públicos das decisões observadas até 01/10/2026. ADR001 a ADR004 pr
 ## ADR006 — Railway com staging e produção separados
 
 **Contexto:** staging e produção precisam de execução reproduzível e isolada.
-**Decisão:** hospedar a API e o PostgreSQL no Railway, usando `backend-staging` com `Postgres-Staging` para validação e `backend-prod` com `Postgres-Production` para o ambiente usado pelos clientes.
+**Decisão:** hospedar a API e o PostgreSQL no Railway, usando `booklog-backend-staging` com `Postgres-BookLog-Staging` para validação e `booklog-backend` com `Postgres` para o serviço que atende os clientes. Ambos estão no environment Railway chamado `production`; os componentes são separados por serviço e banco.
 **Consequências:** o deploy e a administração ficam mais simples; migrations continuam sendo uma etapa controlada; dados e segredos permanecem fora da imagem. Os artefatos AWS/CDK preservados no backend são legados e não representam a infraestrutura atual.
 
 ## ADR007 — Integrações externas por providers e fallback

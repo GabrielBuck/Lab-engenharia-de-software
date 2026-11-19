@@ -1,69 +1,73 @@
-# BookLog
+![BookLog — sua vida de leituras em um só lugar](assets/booklog-cover.svg)
 
-![BookLog — Organize sua biblioteca. Acompanhe sua leitura.](assets/booklog-cover.svg)
+**BookLog** é um aplicativo de organização de leituras e comunidade literária, desenvolvido para iOS e Android. Aqui estão as decisões, a arquitetura e os artefatos de **Laboratório de Engenharia de Software**.
 
-[![Documentação](https://github.com/GabrielBuck/Lab-engenharia-de-software/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/GabrielBuck/Lab-engenharia-de-software/actions/workflows/ci.yml)
+**[Conhecer o projeto](docs/entregas/atualizacao-2026-11-19.md)** · **[Instalar no iPhone](https://apps.apple.com/br/app/booklog/id6811496005)** · **[Explorar a documentação](docs/README.md)**
 
-**Portfólio público · Laboratório de Engenharia de Software · Atualização 19/11/2026**
+| iOS | Android | Backend |
+| --- | --- | --- |
+| **Publicado na App Store** | **Beta em testes** | **API em operação no Railway** |
 
-**[Atualização novembro/2026 — contexto, experiência de uso, arquitetura, indicadores e código real](docs/entregas/atualizacao-2026-11-19.md)**
+## Da ideia ao aplicativo
 
-Em novembro de 2026: iOS [publicado na App Store](https://apps.apple.com/br/app/booklog/id6811496005), Android em beta. Indicadores datados de 19/11: 2.555 leitores, 102 clubes, 323 leitores em clubes e marco histórico de Top 6 na categoria Livros (relato da equipe, não posição atual). [Metodologia dos indicadores](docs/10-resultados/indicadores-2026-11.md).
+Antes de pensar em clubes ou recomendações, o problema era simples: um leitor podia registrar seus livros em um lugar, suas páginas em outro e conversar sobre eles em um terceiro. O BookLog aproxima essas atividades sem substituir o livro ou o leitor de e-books.
 
-BookLog é uma plataforma mobile para organizar leituras e conectar leitores. O produto combina biblioteca pessoal, catálogo, avaliações, feed social, clubes, recomendações e recursos de segurança em clientes nativos iOS e Android apoiados por uma API central.
+![Etapas do leitor: descobrir, organizar, ler, avaliar e compartilhar](assets/jornada-leitura.svg)
 
-Este repositório não é um “Hello World” nem um fork da implementação. Ele representa publicamente o estado funcional e arquitetural do projeto oficial, preservando a documentação acadêmica, a rastreabilidade e os limites de segurança.
+| Descoberta e biblioteca | Registro e comunidade |
+| --- | --- |
+| Buscar livros por título, autor ou ISBN, consultar detalhes e salvar em estantes. | Acompanhar páginas, histórico e estatísticas; avaliar, publicar, seguir amigos e participar de clubes. |
+| **Funcionalidades:** catálogo, status de leitura, listas e organização pessoal. | **Funcionalidades:** feed, resenhas, metas, grupos, ranking e recomendações. |
 
-**[Estado atual e delta](docs/estado-atual.md)** · **[Arquitetura](docs/06-arquitetura/visao-arquitetural.md)** · **[Contrato da API](docs/06-arquitetura/contratos-api.md)** · **[Documentação completa](docs/README.md)**
+**[Como usar, do primeiro acesso à comunidade](docs/entregas/atualizacao-2026-11-19.md)**
 
-## O produto hoje
+## Resultados do lançamento
 
-- cadastro, sessão, OAuth, recuperação de senha e autenticação em dois fatores;
-- catálogo com resolução de livros, detalhes, tendências, categorias e compra afiliada;
-- biblioteca com status, progresso, histórico, estatísticas, estantes e importação CSV;
-- avaliações e reviews com notas em incrementos de meia estrela;
-- feed com posts, imagens, comentários e curtidas;
-- perfis, seguidores, amizades, privacidade, bloqueios e denúncias;
-- clubes com membros, convites, mensagens, posts, metas, progresso e ranking;
-- empréstimos entre amigos, anotações, notificações e recomendações;
-- compartilhamento visual nos clientes e fluxo de OCR no Android.
+![Indicadores apresentados em 19 de novembro de 2026: 2.555 leitores, 102 clubes, 323 leitores em clubes e avaliação 4,8/5](assets/indicadores-2026-11.svg)
 
-O [mapa de requisitos](docs/02-requisitos/requisitos-funcionais.md) distingue a baseline da primeira entrega das capacidades sincronizadas depois dela.
+O BookLog chegou ao **Top 6 da categoria Livros da App Store brasileira**, segundo registro histórico da equipe. A classificação oscila e **não representa a posição de hoje**. Os indicadores acima são de **19/11/2026**; a nota de 4,8/5 correspondia a **20 avaliações**.
 
-## Arquitetura
+**[Origem, data e limites dos indicadores](docs/10-resultados/indicadores-2026-11.md)**
+
+## Engenharia por trás do produto
 
 ```mermaid
 flowchart LR
-  iOS["iOS\nSwift / SwiftUI"] -->|HTTPS / REST| API["Railway\nbackend-prod · API NestJS"]
-  Android["Android\nKotlin / Compose"] -->|HTTPS / REST| API
-  API --> DB[("Railway\nPostgres-Production")]
-  API <--> External["Google Books · Open Library\nAmazon Creators · OAuth · IA"]
-  DB -.-> Analytics["Metabase · Databricks\nanálise fora do fluxo transacional"]
+    A["iOS\nSwiftUI"] -->|HTTPS / REST| C["API central\nNestJS / TypeScript"]
+    B["Android\nJetpack Compose"] -->|HTTPS / REST| C
+    C --> D[("PostgreSQL\nRailway")]
+    C <-->|metadados e ofertas| E["Google Books\nAmazon Creators"]
 ```
 
-O backend é um monólito modular em camadas: controllers e DTOs formam a fronteira HTTP, services concentram regras de negócio e repositories abstraem PostgreSQL/adapters de teste. A implantação atual usa Railway, com serviços e bancos PostgreSQL separados para staging e produção. Metabase e Databricks consultam os dados para análise e não participam das requisições normais do aplicativo.
+Os dois aplicativos são **nativos** e compartilham uma API. No backend, controllers e DTOs recebem e validam requisições; services concentram regras de negócio; repositories acessam dados persistentes. No Railway, produção e homologação utilizam serviços e bancos distintos.
 
-## Componentes oficiais auditados
-
-| Componente | Stack | Referência deste snapshot |
+| Área | Implementação | Evidência pública |
 | --- | --- | --- |
-| Backend | NestJS, TypeScript, PostgreSQL, Docker, Railway | `a2852bc` |
-| Android | Kotlin, Jetpack Compose, MVVM/Clean Architecture, Hilt, Retrofit | `b4ed80f` |
-| iOS | Swift, SwiftUI, repositórios e serviços tipados | `cafaf44` |
+| iOS | Swift, SwiftUI, DTOs e repositórios | [Código Swift selecionado](docs/09-codigo-publico/README.md#ios) |
+| Android | Kotlin, Jetpack Compose e camadas por feature | [Código Kotlin selecionado](docs/09-codigo-publico/README.md#android) |
+| API | NestJS, TypeScript, contratos REST e PostgreSQL | [Código TypeScript selecionado](docs/09-codigo-publico/README.md#backend) |
+| Infraestrutura | Railway, produção, homologação, site e serviços de apoio | [Diagrama real de implantação](docs/06-arquitetura/diagrama-implantacao.md) |
 
-Os hashes servem como evidência temporal da auditoria, não como submodules. A fonte da verdade continua nos repositórios oficiais da organização `Bin4ryLibr4ry`.
+**[Arquitetura](docs/06-arquitetura/visao-arquitetural.md)** · **[Requisitos](docs/02-requisitos/requisitos-funcionais.md)** · **[Casos de uso](docs/03-casos-de-uso/README.md)** · **[Modelo de dados](docs/05-modelagem/modelo-dados.md)**
 
-## Modelo e contratos
+## Estrutura e validação
 
-- [Modelo de domínio](docs/05-modelagem/modelo-dominio.md)
-- [Modelo de dados e migrations](docs/05-modelagem/modelo-dados.md)
-- [Famílias de endpoints](docs/06-arquitetura/contratos-api.md)
-- [Decisões arquiteturais](docs/06-arquitetura/decisoes-arquiteturais.md)
-- [Matriz de rastreabilidade](docs/02-requisitos/rastreabilidade.md)
+```text
+docs/
+├── 01-visao-produto/      problema, proposta e personas
+├── 02-requisitos/         RF, RNF, regras e rastreabilidade
+├── 03-casos-de-uso/       fluxos da primeira entrega
+├── 04-design/             jornada e wireframes
+├── 05-modelagem/          domínio e dados
+├── 06-arquitetura/        componentes, implantação e decisões
+├── 07-sprints/            histórico das etapas
+├── 08-operacao/           ambiente e entrega
+├── 09-codigo-publico/     seis exemplos reais revisados
+├── 10-resultados/         indicadores e metodologia
+└── entregas/              baseline e atualização de novembro
+```
 
-## Ambiente de desenvolvimento
-
-Para validar este portfólio:
+A verificação deste repositório é **documental**: links internos, arquivos, referências, estrutura e proteção contra segredos. Ela não substitui o build nem os testes dos projetos privados.
 
 ```bash
 git clone https://github.com/GabrielBuck/Lab-engenharia-de-software.git
@@ -71,36 +75,15 @@ cd Lab-engenharia-de-software
 node scripts/validate-docs.mjs
 ```
 
-Requer Node.js 22 ou superior e não instala dependências. O guia de [ambiente de desenvolvimento](docs/08-operacao/ambiente-desenvolvimento.md) registra os comandos reais do backend, Android/iOS e as categorias de configuração. O arquivo [`.env.example`](.env.example) contém somente placeholders; valores reais nunca pertencem a este repositório.
+Requer Node.js 22+. [Plano de testes](tests/plano-testes.md) · [Validação e limites](docs/09-codigo-publico/validacao-e-limites.md)
 
-## Organização
+## Equipe acadêmica
 
-```text
-docs/
-├── estado-atual.md             Snapshot, referências e matriz de evolução
-├── entregas/                   Registro histórico das entregas
-├── 01-visao-produto/           Problema, valor e personas
-├── 02-requisitos/              Requisitos, regras e rastreabilidade
-├── 03-casos-de-uso/            Recorte narrativo da primeira entrega
-├── 04-design/                  Jornada e wireframes históricos
-├── 05-modelagem/               Domínio e dados persistentes
-├── 06-arquitetura/             Componentes, contratos, implantação e ADRs
-├── 07-sprints/                 Evolução documental
-└── 08-operacao/                Ambiente e fluxo de entrega
-tests/                          Plano público de verificação
-scripts/                        Validação documental
-.github/workflows/              CI do portfólio
-```
+**Gabriel Nottoli Buck** · RA 10425384  
+**Julia Andrade** · RA 10427828
 
-## Equipe
+Aplicativo desenvolvido em colaboração com a equipe do BookLog; os exemplos iOS preservam a autoria original dos arquivos.
 
-| Integrante | RA |
-| --- | --- |
-| Gabriel Nottoli Buck | 10425384 |
-| Julia Andrade | 10427828 |
+---
 
-## Segurança e limites
-
-O portfólio não publica segredos, dados pessoais, URLs internas, IDs de conta cloud, certificados, bancos ou logs. Publica somente seis exemplos reais e selecionados de código, sem replicar o aplicativo integral nem oferecer uma quarta implementação divergente. Veja [fontes, premissas e limites](docs/fontes-e-premissas.md).
-
-O [guia de contribuição](CONTRIBUTING.md) descreve o fluxo de atualização e revisão.
+**[App Store — BookLog para iOS](https://apps.apple.com/br/app/booklog/id6811496005)** · Android em beta · Atualizado em 19/11/2026

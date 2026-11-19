@@ -1,16 +1,21 @@
-# Resultados do BookLog — dados datados
+# BookLog em números — 19/11/2026
 
-| Indicador | Registro | Interpretação |
+![Indicadores apresentados na preparação acadêmica](../../assets/indicadores-2026-11.svg)
+
+| Indicador | Registro apresentado | Origem |
 | --- | ---: | --- |
-| Leitores | 2.555 | Painel público mostrado pela equipe em 19/11/2026 |
-| Clubes | 102 | Mesmo registro datado |
-| Leitores em clubes | 323 | Mesmo registro datado |
-| Avaliação na App Store | 4,8 de 5 | Print apresentado na preparação acadêmica |
-| Número de avaliações | 20 | Mesmo print |
-| Ranking em Livros | Top 6 histórico | Marco relatado pelo time, **não ranking atual** |
+| Leitores | **2.555** | Captura do painel público compartilhada em 19/11/2026 |
+| Clubes | **102** | Mesmo registro |
+| Leitores em clubes | **323** | Mesmo registro |
+| Avaliação do iOS | **4,8/5** | Captura da página do aplicativo na App Store |
+| Avaliações | **20** | Mesma captura |
+| Classificação em Livros | **Top 6 histórico** | Marco informado pela equipe |
 
-As posições mudam. Outro print da preparação mostrava #21. A tabela **não é uma medição independente em tempo real**, não comprova downloads e não permite inferir usuários ativos mensais.
+**Leitura correta:** são dados datados, não contadores em tempo real. O ranking muda (outro registro mostrava #21). A posição Top 6 não é uma afirmação de classificação atual; os dados não demonstram downloads nem usuários ativos mensais.
 
-## Publicação
+## Distribuição
 
-Em novembro de 2026, o iOS estava disponível em https://apps.apple.com/br/app/booklog/id6811496005 e o Android permanecia em beta. Não há link público de lançamento Android nesta entrega.
+- **iOS:** [BookLog na App Store](https://apps.apple.com/br/app/booklog/id6811496005).
+- **Android:** beta em testes no período analisado.
+
+[← Índice](../README.md)

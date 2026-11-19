@@ -1,31 +1,28 @@
 # Visão do produto
 
-**Produto:** BookLog. **Versão:** proposta acadêmica v0.1.
+**BookLog** é um aplicativo nativo de organização e descoberta de livros com uma camada social para leitores. Em novembro de 2026, o iOS está publicado na App Store e o Android em beta.
 
-## Problema
+## Problema observado na concepção
 
-Leitores distribuem listas de livros e anotações de progresso entre memória, notas e planilhas, dificultando retomar uma leitura e visualizar o próprio acervo.
+Listas de livros, progresso de leitura e conversas com outros leitores frequentemente ficam em ferramentas distintas. A proposta do BookLog é reunir esse percurso em uma experiência contínua. Essa descrição é uma **hipótese de produto**, não uma estatística populacional.
 
-## Público e solução
+## Valor para o leitor
 
-Leitores que desejam organizar leituras e interagir com uma comunidade em aplicativos nativos iOS e Android conectados à mesma API. O BookLog oferece catálogo, biblioteca, progresso, avaliações, feed, clubes e descoberta em uma experiência integrada.
+- Guardar livros desejados, em andamento e concluídos.
+- Registrar progresso, histórico, metas e avaliações.
+- Descobrir títulos, consultar informações e recomendações.
+- Interagir com amigos, avaliações, clubes e desafios.
 
-## Escopo inicial
+O BookLog não entrega o conteúdo integral dos e-books: o foco é **organizar e compartilhar a experiência** de leitura.
 
-Cadastro, login, busca de livros, adição à biblioteca, alteração de status, registro de progresso e consulta da biblioteca. O ciclo demonstrável é entrar → buscar → adicionar → ler → atualizar → consultar.
+![Cinco momentos da experiência do leitor](../../assets/jornada-leitura.svg)
 
-## Evolução
+## Escopo técnico
 
-O recorte da primeira entrega permanece preservado nos casos de uso e wireframes históricos. Resenhas, anotações, recomendações, clubes, empréstimos e recursos sociais já fazem parte do produto atual e estão registrados no [estado sincronizado](../estado-atual.md).
+Duas aplicações nativas compartilham uma API NestJS/TypeScript, que valida contratos e guarda dados em PostgreSQL. A execução operacional utiliza Railway, com separação de serviços de produção e homologação.
 
-## Resultados esperados
+## Evolução acadêmica
 
-Concluir o ciclo principal em teste moderado; preservar o progresso após nova sessão; manter isolamento entre bibliotecas de usuários distintos. Metas e métodos estão nos requisitos não funcionais.
+Os [casos de uso](../03-casos-de-uso/README.md) registram a primeira entrega de setembro. A [atualização de novembro](../entregas/atualizacao-2026-11-19.md) descreve o produto ampliado, o lançamento e os indicadores disponíveis.
 
-## Restrições e riscos
-
-O catálogo externo pode falhar. A primeira demonstração deve usar catálogo controlado e contas de teste, sem dados pessoais reais.
-
----
-
-[Índice da documentação](../README.md) · [Página do projeto](../../README.md)
+[← Índice](../README.md)

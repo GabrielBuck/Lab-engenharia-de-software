@@ -1,70 +1,42 @@
 # Documentação do BookLog
 
-Os artefatos preservam a primeira entrega e registram o estado atual auditado nos repositórios oficiais.
+O projeto está organizado como um portfólio de engenharia: **problema → requisitos → design → arquitetura → implementação → operação → resultados**. Os artefatos antigos continuam disponíveis como histórico.
 
-**[Estado atual](estado-atual.md)** · **[Guia da primeira entrega](entregas/primeira-entrega.md)** · **[Página do projeto](../README.md)**
+## Comece por aqui
 
-## 01 · Visão do produto
+| Visão | Conteúdo |
+| --- | --- |
+| [Projeto e funcionalidades](entregas/atualizacao-2026-11-19.md) | Problema original, proposta e jornada do usuário |
+| [Arquitetura](06-arquitetura/visao-arquitetural.md) | Clientes, API, banco, integrações e camadas |
+| [Implantação no Railway](06-arquitetura/diagrama-implantacao.md) | Produção, homologação e serviços de apoio |
+| [Código real selecionado](09-codigo-publico/README.md) | Exemplos TypeScript, Swift e Kotlin com proveniência |
+| [Resultados](10-resultados/indicadores-2026-11.md) | Números datados, App Store e limites da medição |
+| [Qualidade e testes](09-codigo-publico/validacao-e-limites.md) | O que foi verificado e o que permanece fora do escopo |
 
-- [Visão do produto](01-visao-produto/visao-produto.md) — problema, público e escopo.
-- [Proposta de valor](01-visao-produto/proposta-valor.md) — necessidades e resposta do produto.
-- [Personas](01-visao-produto/personas.md) — perfis conceituais que orientam o design.
+## Produto e requisitos
 
-## 02 · Requisitos
+- [Visão do produto](01-visao-produto/visao-produto.md), [proposta de valor](01-visao-produto/proposta-valor.md), [personas](01-visao-produto/personas.md) e [stakeholders](02-requisitos/stakeholders.md)
+- [Requisitos funcionais](02-requisitos/requisitos-funcionais.md) e [não funcionais](02-requisitos/requisitos-nao-funcionais.md)
+- [Regras de negócio](02-requisitos/regras-negocio.md), [glossário](02-requisitos/glossario.md) e [matriz de rastreabilidade](02-requisitos/rastreabilidade.md)
 
-- [Requisitos funcionais](02-requisitos/requisitos-funcionais.md) — baseline RF001–RF007 e capacidades atuais RF008–RF019.
-- [Requisitos não funcionais](02-requisitos/requisitos-nao-funcionais.md) — metas de qualidade pela organização FURPS.
-- [Regras de negócio](02-requisitos/regras-negocio.md) — invariantes e restrições.
-- [Stakeholders](02-requisitos/stakeholders.md) — interesses e atividades de levantamento.
-- [Glossário](02-requisitos/glossario.md) — vocabulário compartilhado.
-- [Rastreabilidade](02-requisitos/rastreabilidade.md) — vínculos entre requisitos, casos e testes.
+## Experiência e modelagem
 
-## 03 · Casos de uso
+- [Casos de uso](03-casos-de-uso/README.md) e [diagrama de casos de uso](03-casos-de-uso/modelo-casos-uso.svg)
+- [Jornada do usuário](04-design/jornada-usuario.md) e [wireframes](04-design/wireframes/README.md)
+- [Modelo de domínio](05-modelagem/modelo-dominio.md), [modelo de dados](05-modelagem/modelo-dados.md) e [fluxo de progresso](05-modelagem/diagrama-sequencia/registrar-progresso.md)
 
-- [Modelo UML e índice](03-casos-de-uso/README.md).
-- [UC001 — Cadastrar usuário](03-casos-de-uso/casos-uso/UC001-cadastrar-usuario.md).
-- [UC002 — Entrar](03-casos-de-uso/casos-uso/UC002-login.md).
-- [UC003 — Buscar e adicionar livro](03-casos-de-uso/casos-uso/UC003-gerenciar-biblioteca.md).
-- [UC004 — Atualizar status e progresso](03-casos-de-uso/casos-uso/UC004-registrar-progresso.md).
-- [UC005 — Consultar biblioteca](03-casos-de-uso/casos-uso/UC005-consultar-biblioteca.md).
+## Arquitetura e execução
 
-## 04 · Design
+- [Componentes](06-arquitetura/diagrama-componentes.md), [pacotes](06-arquitetura/diagrama-pacotes.md) e [implantação](06-arquitetura/diagrama-implantacao.md)
+- [Decisões arquiteturais](06-arquitetura/decisoes-arquiteturais.md) e [contratos da API](06-arquitetura/contratos-api.md)
+- [Ambiente de desenvolvimento](08-operacao/ambiente-desenvolvimento.md)
+- [Plano de testes acadêmico](../tests/plano-testes.md)
 
-- [Jornada do usuário](04-design/jornada-usuario.md) — ações, pensamentos e emoções.
-- [Wireframes](04-design/wireframes/README.md) — entrada, biblioteca, busca e progresso.
+## Evolução registrada
 
-## 05 · Modelagem
+- [Primeira entrega — setembro/2026](entregas/primeira-entrega.md)
+- [Sprint 01](07-sprints/sprint-01.md) e [Sprint 02](07-sprints/sprint-02.md)
+- [Sincronização de outubro e atualização de novembro](estado-atual.md)
+- [Fontes e limites](fontes-e-premissas.md)
 
-- [Modelo de domínio](05-modelagem/modelo-dominio.md) — entidades, relações e invariantes.
-- [Modelo de dados](05-modelagem/modelo-dados.md) — grupos de tabelas, constraints e migrations.
-- [Sequência de registro de progresso](05-modelagem/diagrama-sequencia/registrar-progresso.md) — interação entre cliente, API e persistência.
-
-## 06 · Arquitetura
-
-- [Visão arquitetural](06-arquitetura/visao-arquitetural.md).
-- [Componentes](06-arquitetura/diagrama-componentes.md).
-- [Pacotes](06-arquitetura/diagrama-pacotes.md).
-- [Implantação](06-arquitetura/diagrama-implantacao.md).
-- [Decisões arquiteturais](06-arquitetura/decisoes-arquiteturais.md) — contexto, alternativas e consequências.
-- [Contratos da API](06-arquitetura/contratos-api.md) — convenções e famílias de endpoints.
-
-## 07 · Processo e qualidade
-
-- [Sprint 01](07-sprints/sprint-01.md) — artefatos produzidos.
-- [Sprint 02](07-sprints/sprint-02.md) — sincronização com o produto real.
-- [Plano de testes](../tests/plano-testes.md) — CT001 a CT012.
-- [Contribuição](../CONTRIBUTING.md) — práticas de colaboração.
-- [Fontes técnicas](fontes-e-premissas.md).
-
-## 08 · Operação
-
-- [Ambiente de desenvolvimento](08-operacao/ambiente-desenvolvimento.md) — execução local, configuração segura e CI/CD.
-
-
-## Atualização acadêmica de novembro de 2026
-
-- [Projeto e jornada do usuário](entregas/atualizacao-2026-11-19.md)
-- [Arquitetura e Railway atual](06-arquitetura/railway-2026-11.md)
-- [Seis arquivos reais do backend, iOS e Android](09-codigo-publico/README.md)
-- [Plano de validação e limites](09-codigo-publico/validacao-e-limites.md)
-- [Indicadores com metodologia](10-resultados/indicadores-2026-11.md)
+[← Página inicial](../README.md)
