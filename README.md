@@ -4,7 +4,11 @@
 
 [![Documentação](https://github.com/GabrielBuck/Lab-engenharia-de-software/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/GabrielBuck/Lab-engenharia-de-software/actions/workflows/ci.yml)
 
-**Portfólio público · Laboratório de Engenharia de Software · Snapshot 01/10/2026**
+**Portfólio público · Laboratório de Engenharia de Software · Atualização 19/11/2026**
+
+**[Atualização novembro/2026 — contexto, experiência de uso, arquitetura, indicadores e código real](docs/entregas/atualizacao-2026-11-19.md)**
+
+Em novembro de 2026: iOS [publicado na App Store](https://apps.apple.com/br/app/booklog/id6811496005), Android em beta. Indicadores datados de 19/11: 2.555 leitores, 102 clubes, 323 leitores em clubes e marco histórico de Top 6 na categoria Livros (relato da equipe, não posição atual). [Metodologia dos indicadores](docs/10-resultados/indicadores-2026-11.md).
 
 BookLog é uma plataforma mobile para organizar leituras e conectar leitores. O produto combina biblioteca pessoal, catálogo, avaliações, feed social, clubes, recomendações e recursos de segurança em clientes nativos iOS e Android apoiados por uma API central.
 
@@ -97,6 +101,6 @@ scripts/                        Validação documental
 
 ## Segurança e limites
 
-O portfólio não publica segredos, dados pessoais, URLs internas, IDs de conta cloud, certificados, bancos ou logs. Também não duplica o código dos repositórios oficiais, evitando uma quarta implementação divergente. Veja [fontes, premissas e limites](docs/fontes-e-premissas.md).
+O portfólio não publica segredos, dados pessoais, URLs internas, IDs de conta cloud, certificados, bancos ou logs. Publica somente seis exemplos reais e selecionados de código, sem replicar o aplicativo integral nem oferecer uma quarta implementação divergente. Veja [fontes, premissas e limites](docs/fontes-e-premissas.md).
 
 O [guia de contribuição](CONTRIBUTING.md) descreve o fluxo de atualização e revisão.

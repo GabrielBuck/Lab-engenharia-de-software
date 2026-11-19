@@ -1,0 +1,6 @@
+flowchart LR
+  IOS["App iOS / SwiftUI"] -->|HTTPS / JSON| API["API NestJS + TypeScript"]
+  AND["App Android / Kotlin Compose beta"] -->|HTTPS / JSON| API
+  API --> DB[("PostgreSQL")]
+  API <-->|catálogo / ofertas| EXT["Google Books / Amazon Creators"]
+  DB -.-> DASH["Análise / BI fora do fluxo transacional"]

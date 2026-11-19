@@ -59,3 +59,12 @@ Os artefatos preservam a primeira entrega e registram o estado atual auditado no
 ## 08 · Operação
 
 - [Ambiente de desenvolvimento](08-operacao/ambiente-desenvolvimento.md) — execução local, configuração segura e CI/CD.
+
+
+## Atualização acadêmica de novembro de 2026
+
+- [Projeto e jornada do usuário](entregas/atualizacao-2026-11-19.md)
+- [Arquitetura e Railway atual](06-arquitetura/railway-2026-11.md)
+- [Seis arquivos reais do backend, iOS e Android](09-codigo-publico/README.md)
+- [Plano de validação e limites](09-codigo-publico/validacao-e-limites.md)
+- [Indicadores com metodologia](10-resultados/indicadores-2026-11.md)

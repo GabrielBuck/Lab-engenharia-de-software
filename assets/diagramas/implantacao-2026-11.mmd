@@ -1,0 +1,8 @@
+flowchart TB
+ subgraph R["BookLog no Railway"]
+    P["booklog-backend: produção"] --> DBP[("Postgres")]
+    S["booklog-backend-staging: validação"] --> DBS[("Postgres-BookLog-Staging")]
+    WEB["Booklog-Home-Page"] --> DBW[("Postgres-Website")]
+    HUB["Booklog-Company-Hub"] --> DBH[("Postgres-Company-Hub")]
+    SYNC["catalogy-sync"]
+ end
